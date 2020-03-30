@@ -51,7 +51,7 @@ class AuthenticatorController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render(
-            'main/login.html.twig',
+            'main/landing.html.twig',
             [
                 'form' => $form->createView(),
                 'last_username' => $lastUsername,

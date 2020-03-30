@@ -22,6 +22,7 @@ Encore
 
     //css entry
     .addStyleEntry('main', ['./assets/less/main.less', './assets/scss/main.scss'])
+    .addStyleEntry('landing', './assets/scss/landing.scss')
     .addStyleEntry('login', './assets/less/pages/login.less')
     .addStyleEntry('register', './assets/less/pages/register.less')
 

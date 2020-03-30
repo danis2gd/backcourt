@@ -24,6 +24,7 @@ class LoginFormType extends AbstractType
                     'label' => 'Username/Email',
                     'attr' => [
                         'data-parsley-length' => '[3, 100]',
+                        'placeholder' => 'Username/Email'
                     ],
                     'constraints' => [
                         new Length([
@@ -37,7 +38,10 @@ class LoginFormType extends AbstractType
                 'password',
                 PasswordType::class,
                 [
-                    'label' => 'Password'
+                    'label' => 'Password',
+                    'attr' => [
+                        'placeholder' => 'Password'
+                    ]
                 ]
             )
             ->add(

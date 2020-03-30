@@ -1,7 +1,8 @@
 // module imports
+import $ from 'jquery';
 import 'bootstrap';
 import 'popper.js';
 
 // env setup
-const $ = require('jquery');
-
+window.jQuery = $;
+window.$ = $;

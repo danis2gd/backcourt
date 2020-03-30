@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\DBAL\Types\RoleType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\GuidType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Ramsey\Uuid\Uuid;
 
-// TODO unique constraints within ORM\Table
-
 /**
  * @ORM\Table(
- *     schema="USEM_User",
  *     name="tblUser"
  * )
  *
@@ -46,11 +44,11 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @var string
+     * @var ArrayCollection|UserRole[]
      *
-     * @ORM\Column(name="jsnRoles", type="json")
+     * @ORM\OneToMany(targetEntity="App\Entity\UserRole", mappedBy="user", cascade={"persist"})
      */
-    private $roles;
+    private $userRoles;
 
     /**
      * @var string
@@ -71,7 +69,8 @@ class User implements UserInterface
         $this->email = $email;
         $this->password = $password;
 
-        $this->roles = [];
+        $this->userRoles = new ArrayCollection();
+        $this->userRoles->add(UserRole::create($this, RoleType::ROLE_USER));
     }
 
     /**
@@ -135,23 +134,9 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        return array_unique(array_merge(['ROLE_USER'], $this->roles));
-    }
-
-    /**
-     * @param array $roles
-     */
-    public function setRoles(array $roles): void
-    {
-        $this->roles = $roles;
-    }
-
-    /**
-     *
-     */
-    public function resetRoles(): void
-    {
-        $this->roles = [];
+        return array_unique(
+            array_merge(['ROLE_USER'], $this->getRoleHandles())
+        );
     }
 
     /**
@@ -185,5 +170,19 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getRoleHandles(): array
+    {
+        $roleHandles = [];
+
+        foreach ($this->userRoles as $userRole) {
+            $roleHandles[] = $userRole->getRole();
+        }
+
+        return $roleHandles;
     }
 }
