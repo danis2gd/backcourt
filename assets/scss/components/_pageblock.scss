@@ -1,0 +1,20 @@
+.page-block {
+    .page-block-header {
+        padding: 2%;
+        background-color: $primary;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+
+        h5 {
+            margin: 0;
+        }
+    }
+
+    .page-block-content {
+        .schedule-block {
+            .schedule-content {
+                background-color: black;
+            }
+        }
+    }
+}

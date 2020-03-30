@@ -5,13 +5,91 @@
 {% endblock title %}
 
 {% block body %}
-    <div class="container">
-        {% if navigation %}
-            {% include 'includes/ui/navigation.html.twig' %}
-        {% endif %}
 
+    {{ include("includes/ui/news.html.twig") }}
+
+    <div class="container page-content">
         <div class="row">
-            {{ app.user.roles|join() }}
+            <div class="col-md-4">
+                {{ include("includes/ui/team/card.html.twig") }}
+            </div>
+
+            <div class="col-md-8">
+                <div class="page-block">
+                    <div class="page-block-header">
+                        <h5>Schedule</h5>
+                    </div>
+                    <div class="page-block-content">
+                        <div class="row">
+                            <div class="col-md-2 schedule-block">
+                                <div class="row">
+                                    <div class="col-md-2 schedule-content">
+                                        W
+                                    </div>
+                                    <div class="col-md-8 schedule-content">
+                                        TEST
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 schedule-block">
+                                <div class="row">
+                                    <div class="col-md-2 schedule-content">
+                                        W
+                                    </div>
+                                    <div class="col-md-8 schedule-content">
+                                        TEST
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 schedule-block">
+                                <div class="row">
+                                    <div class="col-md-2 schedule-content">
+                                        W
+                                    </div>
+                                    <div class="col-md-8 schedule-content">
+                                        TEST
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 schedule-block">
+                                <div class="row">
+                                    <div class="col-md-2 schedule-content">
+                                        W
+                                    </div>
+                                    <div class="col-md-8 schedule-content">
+                                        TEST
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 schedule-block">
+                                <div class="row">
+                                    <div class="col-md-2 schedule-content">
+                                        W
+                                    </div>
+                                    <div class="col-md-8 schedule-content">
+                                        TEST
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 schedule-block">
+                                <div class="row">
+                                    <div class="col-md-2 schedule-content">
+                                        W
+                                    </div>
+                                    <div class="col-md-8 schedule-content">
+                                        TEST
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock body %}

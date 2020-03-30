@@ -3,13 +3,13 @@
 {% set isUserProfile = (app.user.username is same as(user)) %}
 
 {% block body %}
-    <div class="container">
-        {% if navigation %}
-            {% include 'includes/ui/navigation.html.twig' %}
-        {% endif %}
+    <div class="container page-content">
+        {{ include("includes/ui/alerts.html.twig") }}
 
         <div class="row">
-            <h3>{{ user }}</h3>
+            <div class="col-md-12">
+                <h3>{{ user }}</h3>
+            </div>
         </div>
 
         <div class="row">
