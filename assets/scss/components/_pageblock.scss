@@ -11,9 +11,27 @@
     }
 
     .page-block-content {
-        .schedule-block {
+
+        &.schedule-block {
+            color: black;
+            background-color: white;
+
             .schedule-content {
-                background-color: black;
+
+                .col-sm-4 {
+                    text-align: center;
+                    margin: auto 2px;
+                    max-width: 35px;
+                }
+            }
+
+            .col-sm-4 {
+                padding-right: 0;
+            }
+
+            .col-sm-7 {
+                padding-right: 0;
+                padding-left: 0;
             }
         }
     }

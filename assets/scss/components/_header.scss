@@ -1,6 +1,10 @@
 .userbar {
     background: $secondary-bg;
 
+    &.sticky-top {
+        z-index: 1500;
+    }
+
     &.bg-dark-red {
         // todo move to common colors
         background: #b00c0e;
@@ -9,4 +13,8 @@
             color: white !important;
         }
     }
+}
+
+.navbar.main-nav {
+    top: 36px;
 }

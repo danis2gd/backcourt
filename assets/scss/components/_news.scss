@@ -1,0 +1,10 @@
+#news-carousel-lg {
+    .carousel-item {
+        height: 350px;
+
+        img {
+            height: 100%;
+            display: block; /* remove extra space below image */
+        }
+    }
+}

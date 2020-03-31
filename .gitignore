@@ -1,3 +1,6 @@
+# Static images
+/public/images/news/*
+
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
