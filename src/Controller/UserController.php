@@ -43,7 +43,6 @@ class UserController extends AbstractController {
         return $this->render(
             'main/profile/index.html.twig',
             [
-                'navigation' => NavigationEnumerator::$navigation,
                 'user' => $user,
                 'userSettingsForm' => $settingsForm,
             ]

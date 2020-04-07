@@ -1,6 +1,8 @@
 .page-block {
+    margin-bottom: 15px;
+
     .page-block-header {
-        padding: 2%;
+        padding: 10px;
         background-color: $primary;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
@@ -11,13 +13,11 @@
     }
 
     .page-block-content {
-
         &.schedule-block {
             color: black;
             background-color: white;
 
             .schedule-content {
-
                 .col-sm-4 {
                     text-align: center;
                     margin: auto 2px;

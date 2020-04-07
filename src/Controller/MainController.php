@@ -12,11 +12,14 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function homepage() {
+    public function indexAction() {
+
+        $team = $this->getUser()->getTeam();
+
         return $this->render(
             'main/index.html.twig',
             [
-                'navigation' => NavigationEnumerator::$navigation
+                'team' => $team
             ]
         );
     }

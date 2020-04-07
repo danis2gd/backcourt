@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - 404
+{% endblock title %}
+
+{% block body %}
+    <div class="container page-content">
+        <h2>Oops, the page you request could not be found.</h2>
+        <h3>{{ errorMessage }}</h3>
+    </div>
+{% endblock body %}

@@ -1,0 +1,26 @@
+<div class="page-block">
+    <div class="page-block-header">
+        <h5>Schedule</h5>
+    </div>
+    <div class="page-block-content schedule-block border border-grey border-top-0">
+        <div class="row no-gutters">
+            {% for i in 1..8 %}
+                <div class="col-sm-3 border border-light">
+                    <div class="row no-gutters schedule-content p-2">
+                        <div class="col-sm-4">
+                            {{ random(1,31) }}/3
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="row no-gutters">
+                                <strong>Chicago Bulls</strong>
+                            </div>
+                            <div class="row no-gutters">
+                                @ Atlanta Hawks
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

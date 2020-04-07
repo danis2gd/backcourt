@@ -6,10 +6,8 @@ namespace App\Entity;
 
 use App\DBAL\Types\RoleType;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\DBAL\Types\GuidType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Ramsey\Uuid\Uuid;
 
 /**
  * @ORM\Table(
@@ -58,12 +56,28 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @var UserTeam|null
+     *
+     * @ORM\OneToOne(targetEntity="UserTeam", cascade={"persist"})
+     * @ORM\JoinColumn(name="intUserTeamId", referencedColumnName="intUserTeamId", nullable=true)
+     */
+    private $primaryUserTeam;
+
+    /**
+     * @var ArrayCollection|UserTeam[]
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\UserTeam", mappedBy="user", cascade={"persist"})
+     */
+    private $userTeams;
+
+    /**
      * User constructor.
      * @param string $username
      * @param string $email
      * @param string $password
+     * @param Team|null $team
      */
-    private function __construct(string $username, string $email, string $password)
+    private function __construct(string $username, string $email, string $password, ?Team $team = null)
     {
         $this->username = $username;
         $this->email = $email;
@@ -71,6 +85,12 @@ class User implements UserInterface
 
         $this->userRoles = new ArrayCollection();
         $this->userRoles->add(UserRole::create($this, RoleType::ROLE_USER));
+
+        $this->userTeams = new ArrayCollection();
+
+        if ($team instanceof Team) {
+            $this->setPrimaryTeam(UserTeam::create($this, $team));
+        }
     }
 
     /**
@@ -184,5 +204,37 @@ class User implements UserInterface
         }
 
         return $roleHandles;
+    }
+
+    /**
+     * @return UserTeam|null
+     */
+    public function getPrimaryUserTeam(): ?UserTeam
+    {
+        return $this->primaryUserTeam;
+    }
+
+    /**
+     * @param UserTeam $userTeam
+     */
+    public function updatePrimaryTeam(UserTeam $userTeam)
+    {
+        $this->primaryUserTeam = $userTeam;
+
+        if (!$this->userTeams->contains($userTeam)) {
+            $this->userTeams->add($userTeam);
+        }
+    }
+
+    /**
+     * @return Team|null
+     */
+    public function getTeam(): ?Team
+    {
+        if (!$this->primaryUserTeam instanceof UserTeam) {
+            return null;
+        }
+
+        return $this->primaryUserTeam->getTeam();
     }
 }

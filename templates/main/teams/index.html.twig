@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Teams
+{% endblock title %}
+
+{% block body %}
+    <div class="container page-content">
+        <div class="row">
+            <div class="col-md-4">
+                {{ include("includes/ui/team/team_card.html.twig") }}
+            </div>
+
+            <div class="col-md-8">
+                <div class="page-block">
+                    <div class="page-block-header">
+                        <h5>Teams</h5>
+                    </div>
+                    <div class="page-block-content schedule-block border border-grey border-top-0">
+                            {% for team in teams %}
+                                <li>
+                                    {{ team.name }}, {{ team.abbreviation }}, <a href="{{ path('app_teams_profile', {'teamName': team.name}) }}">Profile</a>
+                                </li>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

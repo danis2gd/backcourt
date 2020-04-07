@@ -37,7 +37,7 @@ class UserRole
     /**
      * @var RoleType
      *
-     * @ORM\Column(name="position", type="RoleType", nullable=false)
+     * @ORM\Column(name="strRole", type="RoleType", nullable=false)
      * @EnumAssert\Enum(entity="App\DBAL\Types\RoleType")
      */
     private $role;
