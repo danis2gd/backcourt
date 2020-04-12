@@ -89,9 +89,10 @@ class Player
     private $team;
 
     /**
-     * @var PlayerAttribute
+     * @var PlayerAttribute|null
      *
-     * @ORM\OneToOne(targetEntity="App\Entity\PlayerAttribute")
+     * @ORM\OneToOne(targetEntity="App\Entity\PlayerAttribute", mappedBy="player")
+     * @ORM\JoinColumn(name="intPlayerAttributeId", referencedColumnName="intPlayerAttributeId")
      */
     private $attributes;
 
