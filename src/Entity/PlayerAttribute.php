@@ -34,7 +34,7 @@ class PlayerAttribute
     private $player;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="decJumpShot", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -42,7 +42,7 @@ class PlayerAttribute
     private $jumpShot;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="decJumpShotRange", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -50,7 +50,7 @@ class PlayerAttribute
     private $jumpShotRange;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="decLayup", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -58,7 +58,7 @@ class PlayerAttribute
     private $layup;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="decDunk", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -66,7 +66,7 @@ class PlayerAttribute
     private $dunk;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="decHandling", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -74,7 +74,7 @@ class PlayerAttribute
     private $handling;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="decPassing", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -82,7 +82,7 @@ class PlayerAttribute
     private $passing;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="decFreeThrow", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -90,7 +90,7 @@ class PlayerAttribute
     private $freeThrow;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="decInsideDefence", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -98,7 +98,7 @@ class PlayerAttribute
     private $insideDefence;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="decBlocking", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -106,7 +106,15 @@ class PlayerAttribute
     private $blocking;
 
     /**
-     * @var float
+     * @var string
+     *
+     * @ORM\Column(name="decSteals", type="decimal", precision=5, scale=0)
+     * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
+     */
+    private $steals;
+
+    /**
+     * @var string
      *
      * @ORM\Column(name="decOutsideDefence", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -114,7 +122,7 @@ class PlayerAttribute
     private $outsideDefence;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="decStamina", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
@@ -159,89 +167,97 @@ class PlayerAttribute
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getJumpShot(): float
+    public function getJumpShot(): string
     {
         return $this->jumpShot;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getJumpShotRange(): float
+    public function getJumpShotRange(): string
     {
         return $this->jumpShotRange;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getLayup(): float
+    public function getLayup(): string
     {
         return $this->layup;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getDunk(): float
+    public function getDunk(): string
     {
         return $this->dunk;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getHandling(): float
+    public function getHandling(): string
     {
         return $this->handling;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getPassing(): float
+    public function getPassing(): string
     {
         return $this->passing;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getFreeThrow(): float
+    public function getFreeThrow(): string
     {
         return $this->freeThrow;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getInsideDefence(): float
+    public function getInsideDefence(): string
     {
         return $this->insideDefence;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getBlocking(): float
+    public function getBlocking(): string
     {
         return $this->blocking;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getOutsideDefence(): float
+    public function getSteals(): string
+    {
+        return $this->steals;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOutsideDefence(): string
     {
         return $this->outsideDefence;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getStamina(): float
+    public function getStamina(): string
     {
         return $this->stamina;
     }

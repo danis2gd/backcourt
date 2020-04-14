@@ -17,7 +17,7 @@
                         Team
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbar-team">
-                        <a class="dropdown-item" href="#">Roster</a>
+                        <a class="dropdown-item" href="{{ path('app_teams_roster', {'teamName': app.user.team.name}) }}">Roster</a>
                         <a class="dropdown-item" href="#">Schedule</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>

@@ -128,4 +128,33 @@ class TeamsController extends AbstractController
             ]
         );
     }
+
+    /**
+     * @Route(name="roster", path="/{teamName}/roster")
+     *
+     * @param string $teamName
+     *
+     * @return Response
+     */
+    public function rosterAction(string $teamName) {
+        $team = $this->getDoctrine()
+            ->getRepository(Team::class)
+            ->findOneByName($teamName);
+
+        if (!$team instanceof Team) {
+            return $this->render(
+                'main/error/404.html.twig',
+                [
+                    'errorMessage' => sprintf('%s could not be found.', $teamName),
+                ]
+            );
+        }
+
+        return $this->render(
+            'main/teams/roster.html.twig',
+            [
+                'team' => $team,
+            ]
+        );
+    }
 }

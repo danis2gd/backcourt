@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\DTO\TeamDTO;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +57,13 @@ class Team {
     private $brandLogo;
 
     /**
+     * @var Player[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="team")
+     */
+    private $roster;
+
+    /**
      * Team constructor.
      * @param User $user
      * @param TeamDTO $teamDTO
@@ -69,6 +77,8 @@ class Team {
         $this->arena = Arena::create(
             $this, $this->getName() . '\'s Arena'
         );
+
+        $this->roster = new ArrayCollection();
     }
 
     /**
@@ -127,5 +137,13 @@ class Team {
     public function getArena(): ?Arena
     {
         return $this->arena;
+    }
+
+    /**
+     * @return Player[]
+     */
+    public function getRoster()
+    {
+        return $this->roster;
     }
 }

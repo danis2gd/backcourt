@@ -89,7 +89,7 @@ class User implements UserInterface
         $this->userTeams = new ArrayCollection();
 
         if ($team instanceof Team) {
-            $this->setPrimaryTeam(UserTeam::create($this, $team));
+            $this->updatePrimaryTeam(UserTeam::create($this, $team));
         }
     }
 

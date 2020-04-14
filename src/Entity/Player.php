@@ -46,6 +46,21 @@ class Player
     private $age;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="strPosition", type="string", length=20, options={"unsigned"})
+     */
+    private $position;
+
+    /**
+     * @var College|null
+     *
+     * @ORM\OneToOne(targetEntity="App\Entity\College")
+     * @ORM\JoinColumn(name="intCollegeId", referencedColumnName="intCollegeId")
+     */
+    private $college;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="intHeightCm", type="integer", length=20, options={"unsigned"})
@@ -77,13 +92,15 @@ class Player
      * @var int
      *
      * @ORM\Column(name="intOverall", type="integer", options={"unsigned"})
+     *
+     * # todo: this is calculated based on the PlayerAttribute and cached
      */
     private $overall;
 
     /**
      * @var Team|null
      *
-     * @ORM\OneToOne(targetEntity="App\Entity\Team")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Team", inversedBy="roster")
      * @ORM\JoinColumn(name="intTeamId", referencedColumnName="intTeamId")
      */
     private $team;
@@ -169,5 +186,21 @@ class Player
     public function getTeam(): ?Team
     {
         return $this->team;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPosition(): string
+    {
+        return $this->position;
+    }
+
+    /**
+     * @return PlayerAttribute
+     */
+    public function getAttributes(): PlayerAttribute
+    {
+        return $this->attributes;
     }
 }
