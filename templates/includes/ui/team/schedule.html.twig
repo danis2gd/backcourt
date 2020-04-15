@@ -4,18 +4,18 @@
     </div>
     <div class="page-block-content schedule-block border border-grey border-top-0">
         <div class="row no-gutters">
-            {% for i in 1..8 %}
+            {% for game in team.games %}
                 <div class="col-sm-3 border border-light">
                     <div class="row no-gutters schedule-content p-2">
                         <div class="col-sm-4">
-                            {{ random(1,31) }}/3
+                            {{ game.tipOff|date('d/m') }}
                         </div>
-                        <div class="col-sm-7">
+                        <div class="col-sm-8">
                             <div class="row no-gutters">
-                                <strong>Chicago Bulls</strong>
+                                {{ game.awayTeam.name }}
                             </div>
                             <div class="row no-gutters">
-                                @ Atlanta Hawks
+                                <strong>@ {{ game.homeTeam.name }}</strong>
                             </div>
                         </div>
                     </div>

@@ -54,6 +54,20 @@ class Team {
      */
     private $arena;
 
+    /**
+     * @var Game[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Game", mappedBy="home", cascade={"persist"})
+     */
+    private $homeGames;
+
+    /**
+     * @var Game[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Game", mappedBy="away", cascade={"persist"})
+     */
+    private $awayGames;
+
     private $brandLogo;
 
     /**
@@ -145,5 +159,16 @@ class Team {
     public function getRoster()
     {
         return $this->roster;
+    }
+
+    /**
+     * @return Game[]|ArrayCollection
+     */
+    public function getGames()
+    {
+        return array_merge(
+            $this->homeGames->toArray(),
+            $this->awayGames->toArray()
+        );
     }
 }

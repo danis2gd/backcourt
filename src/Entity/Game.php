@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\DTO\MatchDTO;
+use App\DTO\GameDTO;
 use App\Exception\InvalidEntityException;
 use Carbon\CarbonInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -29,7 +29,7 @@ class Game
     /**
      * @var Team
      *
-     * @ORM\OneToOne(targetEntity="App\Entity\Team")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Team", inversedBy="homeGames")
      * @ORM\JoinColumn(name="intHomeTeamId", referencedColumnName="intTeamId", nullable=true)
      */
     private $home;
@@ -37,7 +37,7 @@ class Game
     /**
      * @var Team
      *
-     * @ORM\OneToOne(targetEntity="App\Entity\Team")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Team", inversedBy="awayGames")
      * @ORM\JoinColumn(name="intAwayTeamId", referencedColumnName="intTeamId", nullable=true)
      */
     private $away;
@@ -73,17 +73,17 @@ class Game
 
     /**
      * Game constructor.
-     * @param MatchDTO $matchDTO
+     * @param GameDTO $gameDTO
      */
-    private function __construct(MatchDTO $matchDTO)
+    private function __construct(GameDTO $gameDTO)
     {
-        $this->home = $matchDTO->getHome();
-        $this->away = $matchDTO->getAway();
-        $this->arena = $matchDTO->getArena();
-        $this->homeAdvantage = $matchDTO->getHomeAdvantage();
+        $this->home = $gameDTO->getHome();
+        $this->away = $gameDTO->getAway();
+        $this->arena = $gameDTO->getArena();
+        $this->homeAdvantage = $gameDTO->getHomeAdvantage();
 
-        $this->fans = $matchDTO->getFans();
-        $this->tipOff = $matchDTO->getTipOff();
+        $this->fans = $gameDTO->getFans();
+        $this->tipOff = $gameDTO->getTipOff();
 
         $this->guardEntity();
     }
@@ -98,12 +98,12 @@ class Game
     }
 
     /**
-     * @param MatchDTO $matchDTO
+     * @param GameDTO $gameDTO
      *
      * @return Game
      */
-    public static function create(MatchDTO $matchDTO): self {
-        return new self($matchDTO);
+    public static function create(GameDTO $gameDTO): self {
+        return new self($gameDTO);
     }
 
     /**
@@ -117,7 +117,7 @@ class Game
     /**
      * @return Team
      */
-    public function getHome(): Team
+    public function getHomeTeam(): Team
     {
         return $this->home;
     }
@@ -125,7 +125,7 @@ class Game
     /**
      * @return Team
      */
-    public function getAway(): Team
+    public function getAwayTeam(): Team
     {
         return $this->away;
     }

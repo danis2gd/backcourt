@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% set isUserProfile = (app.user.username is same as(user)) %}
+{% set isUserProfile = (app.user.username is same as(user.username)) %}
 
 {% block body %}
     <div class="container page-content">

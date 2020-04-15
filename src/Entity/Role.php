@@ -23,6 +23,7 @@ class Role implements LookupInterface
 {
     public const ROLE_ADMIN = 'ROLE_ADMIN';
     public const ROLE_USER = 'ROLE_USER';
+    public const ROLE_COMMISSIONER = 'ROLE_COMMISSIONER';
 
     /**
      * @var integer|null
@@ -64,6 +65,13 @@ class Role implements LookupInterface
     }
 
     /**
+     * @return $this
+     */
+    public static function commissioner(): self {
+        return new self(self::ROLE_COMMISSIONER);
+    }
+
+    /**
      * @param int $id
      */
     public function setId(int $id) {
@@ -88,7 +96,6 @@ class Role implements LookupInterface
 
     public function __toString(): string
     {
-        dump('hi');
         return  "hello";
     }
 

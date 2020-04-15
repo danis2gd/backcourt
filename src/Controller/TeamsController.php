@@ -112,6 +112,8 @@ class TeamsController extends AbstractController
             ->getRepository(Team::class)
             ->findOneByName($teamName);
 
+        dump($team);
+
         if (!$team instanceof Team) {
             return $this->render(
                 'main/error/404.html.twig',

@@ -12,6 +12,9 @@ doctrine:
 
         types:
             RoleType: App\DBAL\Types\RoleType
+            carbondate: DoctrineExtensions\Types\CarbonDateType
+            carbondatetime: DoctrineExtensions\Types\CarbonDateTimeType
+            carbondatetimetz: DoctrineExtensions\Types\CarbonDateTimeTzType
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware

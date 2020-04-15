@@ -134,6 +134,10 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
+        if ('dan' === $this->username) {
+            return 'Dan';
+        }
+
         if ($this->username) {
             return $this->username;
         }
@@ -157,6 +161,22 @@ class User implements UserInterface
         return array_unique(
             array_merge(['ROLE_USER'], $this->getRoleHandles())
         );
+    }
+
+    /**
+     * @param string $searchRole
+     *
+     * @return bool
+     */
+    public function hasRole(string $searchRole): bool
+    {
+        foreach ($this->getRoles() as $role) {
+            if ($searchRole === $role) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -245,7 +265,7 @@ class User implements UserInterface
      */
     public function getPrefix(): ?string
     {
-        if ($this->getUsername() === 'dan') {
+        if ($this->hasRole(Role::ROLE_COMMISSIONER)) {
             return 'Commissioner';
         }
 
@@ -262,5 +282,19 @@ class User implements UserInterface
         }
 
         return $this->getUsername();
+    }
+
+    /**
+     * @return string
+     */
+    public function getRolesString(): string
+    {
+        $roles = '';
+
+        foreach ($this->getRoles() as $role) {
+            $roles .= $role . ', ';
+        }
+        
+        return rtrim($roles, ', ');
     }
 }

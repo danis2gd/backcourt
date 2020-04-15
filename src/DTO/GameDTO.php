@@ -8,7 +8,7 @@ use App\Entity\Arena;
 use App\Entity\Team;
 use Carbon\CarbonInterface;
 
-class MatchDTO
+class GameDTO
 {
     /**
      * @var Team
