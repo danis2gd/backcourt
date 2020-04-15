@@ -61,6 +61,11 @@ class PlayerAttributeDTO
     private $stamina;
 
     /**
+     * @var float
+     */
+    private $speed;
+
+    /**
      * @return float
      */
     public function getJumpShot(): float
@@ -234,5 +239,13 @@ class PlayerAttributeDTO
     public function setStamina(float $stamina): void
     {
         $this->stamina = $stamina;
+    }
+
+    /**
+     * @return float
+     */
+    public function getSpeed(): float
+    {
+        return $this->speed;
     }
 }

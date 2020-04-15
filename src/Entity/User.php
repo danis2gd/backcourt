@@ -237,4 +237,30 @@ class User implements UserInterface
 
         return $this->primaryUserTeam->getTeam();
     }
+
+    /**
+     * todo: role based prefixes (Moderator could be MOD-dan)
+     *
+     * @return string|null
+     */
+    public function getPrefix(): ?string
+    {
+        if ($this->getUsername() === 'dan') {
+            return 'Commissioner';
+        }
+
+        return null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        if (null !== $this->getPrefix()) {
+            return $this->getPrefix() . ' ' . $this->getUsername();
+        }
+
+        return $this->getUsername();
+    }
 }

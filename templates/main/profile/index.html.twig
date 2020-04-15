@@ -6,16 +6,29 @@
     <div class="container page-content">
         <div class="row">
             <div class="col-md-12">
-                <h3>{{ user }}</h3>
+                <h3>{{ user.name }}</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                {{ include('includes/ui/user/user_card.html.twig') }}
+            </div>
+            <div class="col-md-9">
+
             </div>
         </div>
 
         <div class="row">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-basic-tab" data-toggle="pill" href="#v-pills-basic" role="tab" aria-controls="v-pills-basic" aria-selected="true">Basic Information</a>
+                    <a class="nav-link active" id="v-pills-basic-tab" data-toggle="pill" href="#v-pills-basic" role="tab" aria-controls="v-pills-basic" aria-selected="true">
+                        Basic Information
+                    </a>
                     {% if isUserProfile %}
-                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                            Settings
+                        </a>
                     {% endif %}
                 </div>
             </div>

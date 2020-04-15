@@ -34,6 +34,10 @@ class PlayerAttribute
     private $player;
 
     /**
+     * SHOOTING
+     */
+
+    /**
      * @var string
      *
      * @ORM\Column(name="decJumpShot", type="decimal", precision=5, scale=0)
@@ -52,6 +56,18 @@ class PlayerAttribute
     /**
      * @var string
      *
+     * @ORM\Column(name="decFreeThrow", type="decimal", precision=5, scale=0)
+     * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
+     */
+    private $freeThrow;
+
+    /**
+     * INSIDE SCORING
+     */
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="decLayup", type="decimal", precision=5, scale=0)
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
      */
@@ -64,6 +80,10 @@ class PlayerAttribute
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
      */
     private $dunk;
+
+    /**
+     * PLAY MAKING
+     */
 
     /**
      * @var string
@@ -82,12 +102,8 @@ class PlayerAttribute
     private $passing;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="decFreeThrow", type="decimal", precision=5, scale=0)
-     * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
+     * DEFENSE
      */
-    private $freeThrow;
 
     /**
      * @var string
@@ -96,6 +112,14 @@ class PlayerAttribute
      * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
      */
     private $insideDefence;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="decOutsideDefence", type="decimal", precision=5, scale=0)
+     * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
+     */
+    private $outsideDefence;
 
     /**
      * @var string
@@ -114,12 +138,8 @@ class PlayerAttribute
     private $steals;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="decOutsideDefence", type="decimal", precision=5, scale=0)
-     * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
+     * ATHLETICISM
      */
-    private $outsideDefence;
 
     /**
      * @var string
@@ -129,21 +149,34 @@ class PlayerAttribute
      */
     private $stamina;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="decSpeed", type="decimal", precision=5, scale=0)
+     * @Assert\Range(min = 0, max = 100, minMessage = "Min % is 0", maxMessage = "Max % is 100")
+     */
+    private $speed;
+
     private function __construct(Player $player, PlayerAttributeDTO $playerAttributeDTO)
     {
         $this->player = $player;
 
         $this->jumpShot = $playerAttributeDTO->getJumpShot();
         $this->jumpShotRange = $playerAttributeDTO->getJumpShotRange();
+        $this->freeThrow = $playerAttributeDTO->getFreeThrow();
+
         $this->layup = $playerAttributeDTO->getLayup();
         $this->dunk = $playerAttributeDTO->getDunk();
+
         $this->handling = $playerAttributeDTO->getHandling();
         $this->passing = $playerAttributeDTO->getPassing();
-        $this->freeThrow = $playerAttributeDTO->getFreeThrow();
+
         $this->insideDefence = $playerAttributeDTO->getInsideDefence();
         $this->blocking = $playerAttributeDTO->getBlocking();
         $this->outsideDefence = $playerAttributeDTO->getOutsideDefence();
+
         $this->stamina = $playerAttributeDTO->getStamina();
+        $this->speed = $playerAttributeDTO->getSpeed();
     }
 
     public function create(Player $player, PlayerAttributeDTO $playerAttributeDTO) {
@@ -260,5 +293,13 @@ class PlayerAttribute
     public function getStamina(): string
     {
         return $this->stamina;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSpeed(): string
+    {
+        return $this->speed;
     }
 }

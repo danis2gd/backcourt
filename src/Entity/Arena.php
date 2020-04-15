@@ -31,7 +31,7 @@ class Arena
     private $name;
 
     /**
-     * @var string
+     * @var int
      *
      * @ORM\Column(name="intCapacity", type="integer", length=20, options={"unsigned"})
      */
@@ -78,10 +78,18 @@ class Arena
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getCapacity(): string
+    public function getCapacity(): int
     {
         return $this->capacity;
+    }
+
+    /**
+     * @return Team
+     */
+    public function getTeam(): Team
+    {
+        return $this->team;
     }
 }

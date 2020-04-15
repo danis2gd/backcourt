@@ -56,7 +56,7 @@ class Player
      * @var College|null
      *
      * @ORM\OneToOne(targetEntity="App\Entity\College")
-     * @ORM\JoinColumn(name="intCollegeId", referencedColumnName="intCollegeId")
+     * @ORM\JoinColumn(name="intCollegeId", referencedColumnName="intCollegeId", nullable=true)
      */
     private $college;
 
@@ -202,5 +202,13 @@ class Player
     public function getAttributes(): PlayerAttribute
     {
         return $this->attributes;
+    }
+
+    /**
+     * @return College|null
+     */
+    public function getCollege(): ?College
+    {
+        return $this->college;
     }
 }

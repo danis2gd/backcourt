@@ -1,4 +1,7 @@
 {
+    "beberlei/doctrineextensions": {
+        "version": "v1.2.6"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -107,6 +110,9 @@
     },
     "monolog/monolog": {
         "version": "1.25.1"
+    },
+    "nesbot/carbon": {
+        "version": "2.32.2"
     },
     "nikic/php-parser": {
         "version": "v4.2.4"

@@ -20,11 +20,11 @@ class UserController extends AbstractController {
     /**
      * @Route(name="home", path="/{user}")
      *
-     * @param string|null $user
+     * @param string|null $userName
      *
      * @return Response
      */
-    public function indexAction(?string $user = null): Response
+    public function indexAction(?string $userName = null): Response
     {
         dump($this->getUser()->getRoles());
 
@@ -33,8 +33,12 @@ class UserController extends AbstractController {
         $userDTO = new UserDTO();
         $userDTO->populate($this->getUser());
 
-        if (null === $user) {
-            $user = $this->getUser()->getUsername();
+        if (null === $userName) {
+            $user = $this->getUser();
+        } else {
+            $user = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->getByName($userName);
         }
 
         $settingsForm = $this->createForm(UserSettingFormType::class, $userDTO)

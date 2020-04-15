@@ -1,0 +1,85 @@
+<div class="col-sm-12">
+    <div class="row p-2">
+        <div class="col-sm-3">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="{{ player.name }}'s Avatar">
+                <title>{{ player.name }}'s Avatar</title>
+                <rect width="100%" height="100%" fill="#868e96"></rect>
+                <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
+                    Player
+                </text>
+            </svg>
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-sm-12">
+                    <strong>{{ player.name }}, {{ player.position }}</strong>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    {% if player.college is not null %}
+                        {{ player.college.name }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    Attributes:
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Jump Shot: {{ player.attributes.jumpShot }}
+                        </div>
+                        <div class="col-sm-4">
+                            Jump Range: {{ player.attributes.jumpShotRange }}
+                        </div>
+                        <div class="col-sm-4">
+                            Outside Defence: {{ player.attributes.outsideDefence }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Inside Defence: {{ player.attributes.insideDefence }}
+                        </div>
+                        <div class="col-sm-4">
+                            Blocking: {{ player.attributes.blocking }}
+                        </div>
+                        <div class="col-sm-4">
+                            Steals: {{ player.attributes.steals }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Layup: {{ player.attributes.layup }}
+                        </div>
+                        <div class="col-sm-4">
+                            Dunk: {{ player.attributes.dunk }}
+                        </div>
+                        <div class="col-sm-4">
+                            Free Throw: {{ player.attributes.freeThrow }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Handling: {{ player.attributes.handling }}
+                        </div>
+                        <div class="col-sm-4">
+                            Passing: {{ player.attributes.passing }}
+                        </div>
+                        <div class="col-sm-4">
+                            Speed: {{ player.attributes.speed }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Stamina: {{ player.attributes.stamina }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

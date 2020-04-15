@@ -26,7 +26,15 @@ class College
     /**
      * @var string
      *
-     * @ORM\Column(name="intCollegeName", type="string", length=20, unique=true)
+     * @ORM\Column(name="strName", type="string", length=20, unique=true)
      */
     private $name;
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
 }
