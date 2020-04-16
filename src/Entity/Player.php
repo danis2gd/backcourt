@@ -114,6 +114,14 @@ class Player
     private $attributes;
 
     /**
+     * @var Contract|null
+     *
+     * @ORM\OneToOne(targetEntity="App\Entity\Contract", mappedBy="player")
+     * @ORM\JoinColumn(name="intContractId", referencedColumnName="intContractId", nullable=true)
+     */
+    private $contract;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="bolInjured", type="boolean")

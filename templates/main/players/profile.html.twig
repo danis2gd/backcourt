@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Players
+{% endblock title %}
+
+{% block body %}
+    <div class="container page-content">
+        <div class="row">
+            <div class="col-md-4">
+                {% if player.team is not null %}
+                    {% include 'includes/ui/team/team_card.html.twig' with {
+                            'team': player.team
+                    } %}
+                {% else %}
+                    {% include 'includes/ui/team/team_card.html.twig' with {
+                        'team': {
+                            'name': 'Free Agent'
+                        }
+                    } %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-8">
+                <div class="page-block">
+                    <div class="page-block-header">
+                        <h5>{{ player.name }}</h5>
+                    </div>
+                    <div class="page-block-content schedule-block border border-grey border-top-0">
+                        {{ dump(player) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

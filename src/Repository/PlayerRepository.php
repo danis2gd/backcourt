@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Player;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Player|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,14 +21,42 @@ class PlayerRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return QueryBuilder
+     */
+    public function getQueryBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('player')
+            ->innerJoin('player.attributes', 'attributes')
+            ->leftJoin('player.team', 'team')
+            ->leftJoin('player.college', 'college')
+            ->leftJoin('player.contract', 'contract')
+        ;
+    }
+
+    /**
      * @return Player[]
      */
-    public function findAllFreeAgents()
+    public function findAllFreeAgents(): array
     {
         return $this->createQueryBuilder('player')
             ->andWhere('player.team IS NULL')
             ->getQuery()
             ->getResult()
+        ;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return Player
+     */
+    public function findByName(string $name): Player
+    {
+        return $this->getQueryBuilder()
+            ->andWhere('CONCAT(player.firstName, \' \', player.lastName) = :name')
+            ->setParameter('name', $name)
+            ->getQuery()
+            ->getOneOrNullResult()
         ;
     }
 }

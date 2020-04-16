@@ -2,19 +2,21 @@
     <a href="#">
         {#        <img src="" class="card-img-top" alt="Team">#}
         <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="{{ app.user.team.name }}'s Logo">
-            <title>{{ app.user.team.name }}'s Logo</title>
+            <title>{{ team.name }}'s Logo</title>
             <rect width="100%" height="100%" fill="#868e96"></rect>
             <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                {{ app.user.team.name }}'s Logo
+                {{ team.name }}'s Logo
             </text>
         </svg>
     </a>
     <div class="card-body">
-        <h5 class="card-title">{{ app.user.team.name }}</h5>
-        <p class="card-text">
-            {{ app.user.team.arena.name }}<br />
-            Capacity: {{ app.user.team.arena.capacity }}
-        </p>
+        <h5 class="card-title">{{ team.name }}</h5>
+        {% if team.arena is defined %}
+            <p class="card-text">
+                {{ team.arena.name }}<br />
+                Capacity: {{ team.arena.capacity }}
+            </p>
+        {% endif %}
     </div>
 </div>
 

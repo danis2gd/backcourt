@@ -1,0 +1,13 @@
+.navbar {
+    .navbar-nav {
+        .nav-item {
+            a.nav-link {
+                color: $primary;
+            }
+        }
+    }
+
+    &.main-nav {
+        top: 36px;
+    }
+}

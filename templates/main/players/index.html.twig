@@ -15,7 +15,7 @@
                     <div class="page-block-content schedule-block border border-grey border-top-0">
                             {% for player in players %}
                                 <li>
-                                    {{ player.name }}, {{ player.position }}
+                                    {{ player.name }}, {{ player.position }}, <a href="{{ path('app_players_profile', {'name': player.name}) }}">Profile</a>
                                 </li>
                             {% endfor %}
                     </div>

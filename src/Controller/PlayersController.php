@@ -60,4 +60,25 @@ class PlayersController extends AbstractController
             ]
         );
     }
+
+    /**
+     * @Route(name="profile", path="/{name}")
+     *
+     * @param string $name
+     *
+     * @return Response
+     */
+    public function profileAction(string $name): Response
+    {
+        $player = $this->getDoctrine()
+            ->getRepository(Player::class)
+            ->findByName($name);
+
+        return $this->render(
+            'main/players/profile.html.twig',
+            [
+                'player' => $player,
+            ]
+        );
+    }
 }
