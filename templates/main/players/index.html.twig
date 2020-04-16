@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Players
+{% endblock title %}
+
+{% block body %}
+    <div class="container page-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-block">
+                    <div class="page-block-header">
+                        <h5>Players</h5>
+                    </div>
+                    <div class="page-block-content schedule-block border border-grey border-top-0">
+                            {% for player in players %}
+                                <li>
+                                    {{ player.name }}, {{ player.position }}
+                                </li>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

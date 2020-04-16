@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class UserController
+ * Class TeamsController
  * @package App\Controller
  *
  * @Route(name="app_teams_", path="/teams")
@@ -32,16 +32,9 @@ class TeamsController extends AbstractController
             ->getRepository(Team::class)
             ->findAll();
 
-        $team = $this->getDoctrine()
-            ->getRepository(Team::class)
-            ->findOneById(
-                $this->getUser()->getTeam()->getId()
-            );
-
         return $this->render(
             'main/teams/index.html.twig',
             [
-                'team' => $team,
                 'teams' => $teams
             ]
         );
@@ -111,8 +104,6 @@ class TeamsController extends AbstractController
         $team = $this->getDoctrine()
             ->getRepository(Team::class)
             ->findOneByName($teamName);
-
-        dump($team);
 
         if (!$team instanceof Team) {
             return $this->render(

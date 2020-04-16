@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     name="tblPlayer"
  * )
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\PlayerRepository")
  */
 class Player
 {
@@ -101,7 +101,7 @@ class Player
      * @var Team|null
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Team", inversedBy="roster")
-     * @ORM\JoinColumn(name="intTeamId", referencedColumnName="intTeamId")
+     * @ORM\JoinColumn(name="intTeamId", referencedColumnName="intTeamId", nullable=true)
      */
     private $team;
 

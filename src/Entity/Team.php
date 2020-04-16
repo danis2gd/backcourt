@@ -49,7 +49,7 @@ class Team {
     /**
      * @var Arena
      *
-     * @ORM\OneToOne(targetEntity="Arena", inversedBy="team", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Arena", cascade={"persist"})
      * @ORM\JoinColumn(name="intArenaId", referencedColumnName="intArenaId")
      */
     private $arena;

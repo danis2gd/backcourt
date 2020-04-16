@@ -38,35 +38,24 @@ class Arena
     private $capacity;
 
     /**
-     * @var Team
-     *
-     * @ORM\OneToOne(targetEntity="Team", mappedBy="arena")
-     * @ORM\JoinColumn(name="intTeamId", referencedColumnName="intTeamId")
-     */
-    private $team;
-
-    /**
      * Arena constructor.
-     * @param Team $team
      * @param string $name
      * @param int $capacity
      */
-    private function __construct(Team $team, string $name, int $capacity)
+    private function __construct(string $name, int $capacity)
     {
-        $this->team = $team;
         $this->name = $name;
         $this->capacity = $capacity;
     }
 
     /**
-     * @param Team $team
      * @param string $name
      * @param int $capacity
      *
      * @return Arena
      */
-    public static function create(Team $team, string $name, int $capacity = 20000) {
-        return new self($team, $name, $capacity);
+    public static function create(string $name, int $capacity = 20000) {
+        return new self($name, $capacity);
     }
 
     /**
@@ -83,13 +72,5 @@ class Arena
     public function getCapacity(): int
     {
         return $this->capacity;
-    }
-
-    /**
-     * @return Team
-     */
-    public function getTeam(): Team
-    {
-        return $this->team;
     }
 }

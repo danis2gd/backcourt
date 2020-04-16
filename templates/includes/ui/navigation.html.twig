@@ -24,6 +24,20 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_players_index') }}">Players</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Players
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbar-team">
+                        <a class="dropdown-item" href="{{ path('app_players_index') }}">Players</a>
+                        <a class="dropdown-item" href="{{ path('app_players_free_agency') }}">Free Agents</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
