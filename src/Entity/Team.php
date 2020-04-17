@@ -78,10 +78,10 @@ class Team {
     private $roster;
 
     /**
-     * @var DepthChart
+     * @var DepthChart|null
      *
      * @ORM\OneToOne(targetEntity="DepthChart", mappedBy="team")
-     * @ORM\JoinColumn(name="intDepthChartId", referencedColumnName="intDepthChartId")
+     * @ORM\JoinColumn(name="intDepthChartId", referencedColumnName="intDepthChartId", nullable=true)
      */
     private $depthChart;
 
@@ -97,7 +97,7 @@ class Team {
         $this->userTeam = UserTeam::create($user, $this);
 
         $this->arena = Arena::create(
-            $this, $this->getName() . '\'s Arena'
+            $this->getName() . '\'s Arena', 20000
         );
 
         $this->roster = new ArrayCollection();
@@ -178,5 +178,13 @@ class Team {
             $this->homeGames->toArray(),
             $this->awayGames->toArray()
         );
+    }
+
+    /**
+     * @return DepthChart|null
+     */
+    public function getDepthChart(): ?DepthChart
+    {
+        return $this->depthChart;
     }
 }

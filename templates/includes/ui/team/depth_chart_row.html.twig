@@ -1,0 +1,20 @@
+{% if player is not null %}
+    <tr>
+        <th scope="row"></th>
+        <td>
+            <a href="{{ path('app_players_profile', {'name': player.name}) }}">
+                {{ player.name }}
+            </a>
+        </td>
+        <td>{{ player.position }}</td>
+        <td>{{ player.age }}</td>
+        <td>-</td>
+        <td>{{ player.overall }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+{% endif %}

@@ -26,8 +26,8 @@ class DepthChart
     /**
      * @var Team
      *
-     * @ORM\ManyToOne(targetEntity="Team", inversedBy="depthChart")
-     * @ORM\JoinColumn(name="intDepthChartId", referencedColumnName="intDepthChartId")
+     * @ORM\OneToOne(targetEntity="Team", inversedBy="depthChart")
+     * @ORM\JoinColumn(name="intTeamId", referencedColumnName="intTeamId")
      */
     private $team;
 
@@ -146,4 +146,148 @@ class DepthChart
      * @ORM\JoinColumn(name="intTwelfthManId", referencedColumnName="intPlayerId", nullable=true)
      */
     private $twelfthMan;
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return Team
+     */
+    public function getTeam(): Team
+    {
+        return $this->team;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getOffensiveScheme(): ?string
+    {
+        return $this->offensiveScheme;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDefensiveScheme(): ?string
+    {
+        return $this->defensiveScheme;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEffort(): ?string
+    {
+        return $this->effort;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPace(): ?string
+    {
+        return $this->pace;
+    }
+
+    /**
+     * @return Player
+     */
+    public function getPointGuard(): Player
+    {
+        return $this->pointGuard;
+    }
+
+    /**
+     * @return Player
+     */
+    public function getShootingGuard(): Player
+    {
+        return $this->shootingGuard;
+    }
+
+    /**
+     * @return Player
+     */
+    public function getSmallForward(): Player
+    {
+        return $this->smallForward;
+    }
+
+    /**
+     * @return Player
+     */
+    public function getPowerForward(): Player
+    {
+        return $this->powerForward;
+    }
+
+    /**
+     * @return Player
+     */
+    public function getCenter(): Player
+    {
+        return $this->center;
+    }
+
+    /**
+     * @return Player|null
+     */
+    public function getSixthMan(): ?Player
+    {
+        return $this->sixthMan;
+    }
+
+    /**
+     * @return Player|null
+     */
+    public function getSeventhMan(): ?Player
+    {
+        return $this->seventhMan;
+    }
+
+    /**
+     * @return Player|null
+     */
+    public function getEighthMan(): ?Player
+    {
+        return $this->eighthMan;
+    }
+
+    /**
+     * @return Player|null
+     */
+    public function getNinthMan(): ?Player
+    {
+        return $this->ninthMan;
+    }
+
+    /**
+     * @return Player|null
+     */
+    public function getTenthMan(): ?Player
+    {
+        return $this->tenthMan;
+    }
+
+    /**
+     * @return Player|null
+     */
+    public function getEleventhMan(): ?Player
+    {
+        return $this->eleventhMan;
+    }
+
+    /**
+     * @return Player|null
+     */
+    public function getTwelfthMan(): ?Player
+    {
+        return $this->twelfthMan;
+    }
 }

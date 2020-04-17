@@ -152,6 +152,35 @@ class TeamsController extends AbstractController
     }
 
     /**
+     * @Route(name="depth_chart", path="/{teamName}/depth_chart")
+     *
+     * @param string $teamName
+     *
+     * @return Response
+     */
+    public function depthChartAction(string $teamName) {
+        $team = $this->getDoctrine()
+            ->getRepository(Team::class)
+            ->findOneByName($teamName);
+
+        if (!$team instanceof Team) {
+            return $this->render(
+                'main/error/404.html.twig',
+                [
+                    'errorMessage' => sprintf('%s could not be found.', $teamName),
+                ]
+            );
+        }
+
+        return $this->render(
+            'main/teams/depth_chart.html.twig',
+            [
+                'team' => $team,
+            ]
+        );
+    }
+
+    /**
      * @Route(name="schedule", path="/{teamName}/schedule")
      *
      * @param string $teamName
