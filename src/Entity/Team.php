@@ -78,6 +78,14 @@ class Team {
     private $roster;
 
     /**
+     * @var DepthChart
+     *
+     * @ORM\OneToOne(targetEntity="DepthChart", mappedBy="team")
+     * @ORM\JoinColumn(name="intDepthChartId", referencedColumnName="intDepthChartId")
+     */
+    private $depthChart;
+
+    /**
      * Team constructor.
      * @param User $user
      * @param TeamDTO $teamDTO

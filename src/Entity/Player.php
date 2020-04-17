@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Classes\SalaryEstimator;
 use App\DTO\PlayerDTO;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -122,6 +123,11 @@ class Player
     private $contract;
 
     /**
+     * @var DepthChart
+     */
+    private $depthChart;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="bolInjured", type="boolean")
@@ -221,10 +227,18 @@ class Player
     }
 
     /**
+     * @return float
+     */
+    public function getExpectedSalary(): float
+    {
+        return SalaryEstimator::estimate($this);
+    }
+
+    /**
      * @return int
      */
-    public function getExpectedSalary(): int
+    public function getOverall(): int
     {
-        return 1000000;
+        return $this->overall;
     }
 }

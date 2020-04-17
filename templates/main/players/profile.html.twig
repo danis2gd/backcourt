@@ -24,12 +24,61 @@
             </div>
 
             <div class="col-md-8">
-                <div class="page-block">
-                    <div class="page-block-header">
-                        <h5>{{ player.name }}</h5>
-                    </div>
-                    <div class="page-block-content schedule-block border border-grey border-top-0">
-                        {{ dump(player) }}
+                <div class="row">
+                    {% include 'player_card.html.twig' with { 'not_padded': true } %}
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row no-gutters">
+                            <h5 class="pb-2">Season Statistics</h5>
+                            <div class="row table-responsive">
+                                <div class="col-sm-12 table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Season</th>
+                                                <th scope="col">Age</th>
+                                                <th scope="col">Team</th>
+                                                <th scope="col">League</th>
+                                                <th scope="col">Position</th>
+                                                <th scope="col" title="Games">G</th>
+                                                <th scope="col" title="Games Started">GS</th>
+                                                <th scope="col" title="Minutes Played">MP</th>
+                                                <th scope="col" title="Field Goals">FG</th>
+                                                <th scope="col" title="Field Goal Attempts">FGA</th>
+                                                <th scope="col" title="Field Goal %">FG%</th>
+                                                <th scope="col" title="Three Points">3P</th>
+                                                <th scope="col" title="Three Point Attempts">3PA</th>
+                                                <th scope="col" title="Three Point % ">3P%</th>
+                                                <th scope="col" title="Free Throws">FT</th>
+                                                <th scope="col" title="Free Throw Attempts">FTA</th>
+                                                <th scope="col" title="Free Throw %">FT%</th>
+                                                <th scope="col" title="Offensive Rebounds">ORB</th>
+                                                <th scope="col" title="Defensive Rebounds">DRB</th>
+                                                <th scope="col" title="Total Rebounds">TRB</th>
+                                                <th scope="col" title="Assists">AST</th>
+                                                <th scope="col" title="Steals">STL</th>
+                                                <th scope="col" title="Blocks">BLK</th>
+                                                <th scope="col" title="Turnovers">TOV</th>
+                                                <th scope="col" title="Fouls">F</th>
+                                                <th scope="col" title="Points">PTS</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">19/20</th>
+                                                <td>22</td>
+                                                <td>Chicago Bulls</td>
+                                                <td>NBA</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -35,12 +35,28 @@ class Game
     private $home;
 
     /**
+     * @var DepthChart
+     *
+     * @ORM\OneToOne(targetEntity="App\Entity\DepthChart")
+     * @ORM\JoinColumn(name="intHomeDepthChartId", referencedColumnName="intDepthChartId", nullable=true)
+     */
+    private $homeDepthChart;
+
+    /**
      * @var Team
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Team", inversedBy="awayGames")
      * @ORM\JoinColumn(name="intAwayTeamId", referencedColumnName="intTeamId", nullable=true)
      */
     private $away;
+
+    /**
+     * @var DepthChart
+     *
+     * @ORM\OneToOne(targetEntity="App\Entity\DepthChart")
+     * @ORM\JoinColumn(name="intAwayDepthChartId", referencedColumnName="intDepthChartId", nullable=true)
+     */
+    private $awayDepthChart;
 
     /**
      * @var Arena|null
