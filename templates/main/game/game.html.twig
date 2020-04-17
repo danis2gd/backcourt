@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - {{ game.awayTeam.name }} @ {{ game.homeTeam.name }}
+{% endblock title %}
+
+{% block body %}
+    <div class="container page-content">
+        <h3 class="pb-2">{{ game.awayTeam.name }} @ {{ game.homeTeam.name }}</h3>
+
+        <div class="row">
+            <div class="col-md-4">
+                {% include 'includes/ui/team/team_card.html.twig' with { 'team': game.homeTeam } %}
+            </div>
+
+            <div class="col-md-8">
+                {{ include('includes/ui/game/game.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock body %}

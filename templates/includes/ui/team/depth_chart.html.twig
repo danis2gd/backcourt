@@ -24,18 +24,18 @@
                     </thead>
                     <tbody>
                         {% if team.depthChart is not null %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.pointGuard} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.shootingGuard} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.smallForward} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.powerForward} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.center} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.sixthMan} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.seventhMan} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.eighthMan} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.ninthMan} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.tenthMan} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.eleventhMan} %}
-                            {% include 'depth_chart_row.html.twig' with {'player': team.depthChart.twelfthMan} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.pointGuard} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.shootingGuard} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.smallForward} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.powerForward} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.center} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.sixthMan} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.seventhMan} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.eighthMan} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.ninthMan} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.tenthMan} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.eleventhMan} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.twelfthMan} %}
                         {% elseif team.roster is not empty %}
                             {% for player in team.roster %}
                                 <tr>
