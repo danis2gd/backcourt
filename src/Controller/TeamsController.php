@@ -150,4 +150,33 @@ class TeamsController extends AbstractController
             ]
         );
     }
+
+    /**
+     * @Route(name="schedule", path="/{teamName}/schedule")
+     *
+     * @param string $teamName
+     *
+     * @return Response
+     */
+    public function scheduleAction(string $teamName) {
+        $team = $this->getDoctrine()
+            ->getRepository(Team::class)
+            ->findOneByName($teamName);
+
+        if (!$team instanceof Team) {
+            return $this->render(
+                'main/error/404.html.twig',
+                [
+                    'errorMessage' => sprintf('%s could not be found.', $teamName),
+                ]
+            );
+        }
+
+        return $this->render(
+            'main/teams/schedule.html.twig',
+            [
+                'team' => $team,
+            ]
+        );
+    }
 }

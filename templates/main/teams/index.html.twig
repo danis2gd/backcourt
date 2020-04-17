@@ -8,7 +8,9 @@
     <div class="container page-content">
         <div class="row">
             <div class="col-md-4">
-                {{ include("includes/ui/team/team_card.html.twig") }}
+                {% include "includes/ui/team/team_card.html.twig" with {
+                    'team': app.user.team
+                } %}
             </div>
 
             <div class="col-md-8">

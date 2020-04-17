@@ -219,4 +219,12 @@ class Player
     {
         return $this->college;
     }
+
+    /**
+     * @return int
+     */
+    public function getExpectedSalary(): int
+    {
+        return 1000000;
+    }
 }
