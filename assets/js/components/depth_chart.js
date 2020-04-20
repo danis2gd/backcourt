@@ -1,0 +1,3 @@
+$(() => {
+    $('#depthchart').sortable();
+});

@@ -14,7 +14,11 @@
             </div>
 
             <div class="col-md-8">
-                {{ include('includes/ui/game/game.html.twig') }}
+                {% if game.final %}
+                    {{ include('includes/ui/game/game_final.html.twig') }}
+                {% else %}
+                    {{ include('includes/ui/game/game_lineup.html.twig') }}
+                {% endif %}
             </div>
         </div>
     </div>

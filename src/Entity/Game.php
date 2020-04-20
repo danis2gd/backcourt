@@ -88,6 +88,13 @@ class Game
     private $tipOff;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="bolFinal", type="boolean")
+     */
+    private $final = false;
+
+    /**
      * Game constructor.
      * @param GameDTO $gameDTO
      */
@@ -100,6 +107,7 @@ class Game
 
         $this->fans = $gameDTO->getFans();
         $this->tipOff = $gameDTO->getTipOff();
+        $this->final = false;
 
         $this->guardEntity();
     }
@@ -176,5 +184,13 @@ class Game
     public function getTipOff(): CarbonInterface
     {
         return $this->tipOff;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFinal(): bool
+    {
+        return $this->final;
     }
 }

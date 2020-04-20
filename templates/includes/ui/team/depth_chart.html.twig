@@ -22,7 +22,7 @@
                             <th scope="col">PER</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="depthchart">
                         {% if team.depthChart is not null %}
                             {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.pointGuard} %}
                             {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.shootingGuard} %}

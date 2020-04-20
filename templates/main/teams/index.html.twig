@@ -19,11 +19,11 @@
                         <h5>Teams</h5>
                     </div>
                     <div class="page-block-content schedule-block border border-grey border-top-0">
-                            {% for team in teams %}
-                                <li>
-                                    {{ team.name }}, {{ team.abbreviation }}, <a href="{{ path('app_teams_profile', {'teamName': team.name}) }}">Profile</a>
-                                </li>
-                            {% endfor %}
+                        {% for team in teams %}
+                            <li>
+                                {{ team.name }}, {{ team.abbreviation }}, <a href="{{ path('app_teams_profile', {'teamName': team.name}) }}">Profile</a>
+                            </li>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

@@ -50,6 +50,14 @@ Encore
     // enable SASS
     .enableSassLoader()
 
+    .autoProvidejQuery()
+
+    .autoProvideVariables({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+    })
+
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 ;

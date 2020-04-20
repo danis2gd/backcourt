@@ -15,7 +15,8 @@
     },
     "dependencies": {
         "bootstrap": "^4.4.1",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
+        "jquery-ui": "^1.12.1",
         "less": "^3.10.3",
         "less-loader": "4.1",
         "parsleyjs": "^2.9.1",
