@@ -24,21 +24,33 @@
                     </thead>
                     <tbody id="depthchart">
                         {% if team.depthChart is not null %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.pointGuard} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.shootingGuard} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.smallForward} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.powerForward} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.center} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.sixthMan} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.seventhMan} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.eighthMan} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.ninthMan} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.tenthMan} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.eleventhMan} %}
-                            {% include 'includes/ui/team/depth_chart_row.html.twig' with {'player': team.depthChart.twelfthMan} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.pointGuard, 'position': 1} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.shootingGuard, 'position': 2} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.smallForward, 'position': 3} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.powerForward, 'position': 4} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.center, 'position': 5} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.sixthMan, 'position': 6} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.seventhMan, 'position': 7} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.eighthMan, 'position': 8} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.ninthMan, 'position': 9} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.tenthMan, 'position': 10} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.eleventhMan, 'position': 11} %}
+                            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                                {'player': team.depthChart.twelfthMan, 'position': 12} %}
                         {% elseif team.roster is not empty %}
                             {% for player in team.roster %}
-                                <tr>
+                                <tr data-player-id="{{ player.id }}">
                                     <th scope="row"></th>
                                     <td>
                                         <a href="{{ path('app_players_profile', {'name': player.name}) }}">
@@ -65,7 +77,7 @@
                     </tbody>
                 </table>
 
-                <button class="align-middle">Save Depth Chart</button>
+                <button id="save-depth-chart" class="align-middle">Save Depth Chart</button>
             </div>
         </div>
     </div>
