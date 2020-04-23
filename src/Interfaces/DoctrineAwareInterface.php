@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Interfaces;
 
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Interface DoctrineAwareInterface.
@@ -12,12 +12,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 interface DoctrineAwareInterface
 {
     /**
-     * @param string $entityManagerName
+     * @param EntityManagerInterface $doctrine
      */
-    public function setEntityManagerName($entityManagerName);
-
-    /**
-     * @param RegistryInterface $doctrine
-     */
-    public function setDoctrine(RegistryInterface $doctrine);
+    public function setDoctrine(EntityManagerInterface $doctrine);
 }

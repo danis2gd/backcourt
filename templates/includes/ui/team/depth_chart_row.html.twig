@@ -1,5 +1,5 @@
 {% if player is not null %}
-    <tr>
+    <tr class="da" data-player-id="{{ player.id }}">
         <th scope="row"></th>
         <td>
             <a href="{{ path('app_players_profile', {'name': player.name}) }}">

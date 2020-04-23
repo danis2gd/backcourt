@@ -2,10 +2,10 @@
     <div class="page-block-header">
         <h5>Depth Chart</h5>
     </div>
-    <div class="page-block-content border border-grey border-top-0">
-        <div class="row">
+    <div class="page-block-content border border-grey border-top-0 table-responsive">
+        <div class="row no-gutters">
             <div class="col-md-12">
-                <table class="table">
+                <table class="table table-responsive">
                     <thead>
                         <tr>
                             <th scope="col"></th>
@@ -22,7 +22,7 @@
                             <th scope="col">PER</th>
                         </tr>
                     </thead>
-                    <tbody id="depthchart">
+                    <tbody id="sortable">
                         {% if team.depthChart is not null %}
                             {% include 'includes/ui/team/depth_chart_row.html.twig' with
                                 {'player': team.depthChart.pointGuard, 'position': 1} %}
@@ -50,7 +50,7 @@
                                 {'player': team.depthChart.twelfthMan, 'position': 12} %}
                         {% elseif team.roster is not empty %}
                             {% for player in team.roster %}
-                                <tr data-player-id="{{ player.id }}">
+                                <tr id="draggable" data-player-id="{{ player.id }}">
                                     <th scope="row"></th>
                                     <td>
                                         <a href="{{ path('app_players_profile', {'name': player.name}) }}">
@@ -69,9 +69,9 @@
                                     <td></td>
                                 </tr>
                             {% else %}
-                            <tr>
-                                <td colspan="100%">No active roster was found.</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="100%">No active roster was found.</td>
+                                </tr>
                             {% endfor %}
                         {% endif %}
                     </tbody>

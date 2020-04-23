@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Classes\Fetcher\DepthChartFetcher;
+use App\Classes\Saver\DepthChartSaver;
+use App\DTO\DepthChartDTO;
 use App\DTO\UserDTO;
+use App\Entity\DepthChart;
 use App\Entity\Team;
 use App\Entity\User;
 use App\Enumeration\NavigationEnumerator;
@@ -21,6 +25,22 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class TeamsController extends AbstractController
 {
+    /**
+     * @var DepthChartFetcher
+     */
+    private $depthChartFetcher;
+
+    /**
+     * @var DepthChartSaver
+     */
+    private $depthChartSaver;
+
+    public function __construct(DepthChartFetcher $depthChartFetcher, DepthChartSaver $depthChartSaver)
+    {
+        $this->depthChartFetcher = $depthChartFetcher;
+        $this->depthChartSaver = $depthChartSaver;
+    }
+
     /**
      * @Route(name="index", path="/")
      *
@@ -178,6 +198,50 @@ class TeamsController extends AbstractController
                 'team' => $team,
             ]
         );
+    }
+
+    /**
+     * @Route(name="depth_chart_save", path="/{teamName}/depth_chart/save", methods={"POST"}, options={"expose": true})
+     *
+     * @param string $teamName
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function depthChartSaveAction(string $teamName, Request $request) {
+        $team = $this->getDoctrine()
+            ->getRepository(Team::class)
+            ->findOneByName($teamName);
+
+        if (!$team instanceof Team) {
+            return new Response('invalid team');
+        }
+
+        if (!$team instanceof Team) {
+            return new Response('invalid user team');
+        }
+
+        if ($this->getUser()->getUuid() !== $team->getUser()->getUuid()) {
+            return new Response('not your team');
+        }
+
+        $rawDepthChart = $request->get('depthChart');
+        $nullableDepthChart = [];
+
+        for ($i = 0; $i < DepthChart::MAX_ROSTER; $i++) {
+            $nullableDepthChart[$i] = isset($rawDepthChart[$i]) ? $rawDepthChart[$i] : null;
+        }
+
+        $depthChartData = array_combine(DepthChart::$depthChart, $nullableDepthChart);
+
+        $depthChartDTO = new DepthChartDTO();
+        $depthChartDTO->populate(
+            $this->depthChartFetcher->fetch($depthChartData)
+        );
+
+        $this->depthChartSaver->save($team, $depthChartDTO);
+
+        return new Response('success');
     }
 
     /**

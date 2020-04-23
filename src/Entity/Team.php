@@ -126,7 +126,7 @@ class Team {
      */
     public function getUser(): User
     {
-        return $this->user;
+        return $this->getUserTeam()->getUser();
     }
 
     /**
@@ -186,5 +186,13 @@ class Team {
     public function getDepthChart(): ?DepthChart
     {
         return $this->depthChart;
+    }
+
+    /**
+     * @return UserTeam
+     */
+    public function getUserTeam(): UserTeam
+    {
+        return $this->userTeam;
     }
 }

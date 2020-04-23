@@ -59,4 +59,18 @@ class PlayerRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    /**
+     * @param int $id
+     *
+     * @return Player|null
+     */
+    public function getOneById(int $id) {
+        return $this->getQueryBuilder()
+            ->andWhere('player.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

@@ -1,0 +1,1 @@
+{"base_url":"","routes":{"app_teams_depth_chart_save":{"tokens":[["text","\/depth_chart\/save"],["variable","\/","[^\/]++","teamName",true],["text","\/teams"]],"defaults":[],"requirements":[],"hosttokens":[],"methods":["POST"],"schemes":[]}},"prefix":"","host":"localhost","port":"","scheme":"http","locale":[]}

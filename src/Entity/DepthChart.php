@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\DTO\DepthChartDTO;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,10 +11,27 @@ use Doctrine\ORM\Mapping as ORM;
  *     name="tblDepthChart"
  * )
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\DepthChartRepository")
  */
 class DepthChart
 {
+    public const MAX_ROSTER = 12;
+
+    public static $depthChart = [
+        Position::POINT_GUARD,
+        Position::SHOOTING_GUARD,
+        Position::SMALL_FORWARD,
+        Position::POWER_FORWARD,
+        Position::CENTER,
+        Position::SIXTH_MAN,
+        Position::SEVENTH_MAN,
+        Position::EIGHTH_MAN,
+        Position::NINTH_MAN,
+        Position::TENTH_MAN,
+        Position::ELEVENTH_MAN,
+        Position::TWELFTH_MAN
+    ];
+
     /**
      * @var integer|null
      *
@@ -146,6 +164,45 @@ class DepthChart
      * @ORM\JoinColumn(name="intTwelfthManId", referencedColumnName="intPlayerId", nullable=true)
      */
     private $twelfthMan;
+
+    private function __construct(Team $team, DepthChartDTO $depthChartDTO)
+    {
+        $this->team = $team;
+
+        $this->pointGuard = $depthChartDTO->getPointGuard();
+        $this->shootingGuard = $depthChartDTO->getShootingGuard();
+        $this->smallForward = $depthChartDTO->getSmallForward();
+        $this->powerForward = $depthChartDTO->getPowerForward();
+        $this->center = $depthChartDTO->getCenter();
+        $this->sixthMan = $depthChartDTO->getSixthMan();
+        $this->seventhMan = $depthChartDTO->getSeventhMan();
+        $this->eighthMan = $depthChartDTO->getEighthMan();
+        $this->ninthMan = $depthChartDTO->getNinthMan();
+        $this->tenthMan = $depthChartDTO->getTenthMan();
+        $this->eleventhMan = $depthChartDTO->getEleventhMan();
+        $this->twelfthMan = $depthChartDTO->getTwelfthMan();
+    }
+
+    public static function create(Team $team, DepthChartDTO $depthChartDTO)
+    {
+        return new self($team, $depthChartDTO);
+    }
+
+    public function update(DepthChartDTO $depthChartDTO)
+    {
+        $this->pointGuard = $depthChartDTO->getPointGuard();
+        $this->shootingGuard = $depthChartDTO->getShootingGuard();
+        $this->smallForward = $depthChartDTO->getSmallForward();
+        $this->powerForward = $depthChartDTO->getPowerForward();
+        $this->center = $depthChartDTO->getCenter();
+        $this->sixthMan = $depthChartDTO->getSixthMan();
+        $this->seventhMan = $depthChartDTO->getSeventhMan();
+        $this->eighthMan = $depthChartDTO->getEighthMan();
+        $this->ninthMan = $depthChartDTO->getNinthMan();
+        $this->tenthMan = $depthChartDTO->getTenthMan();
+        $this->eleventhMan = $depthChartDTO->getEleventhMan();
+        $this->twelfthMan = $depthChartDTO->getTwelfthMan();
+    }
 
     /**
      * @return int|null

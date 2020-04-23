@@ -1,0 +1,55 @@
+<div class="page-block">
+    <div class="page-block-header">
+        <h5>Roster</h5>
+    </div>
+    <div class="page-block-content border border-grey border-top-0 table-responsive">
+        <div class="row no-gutters">
+            <div class="col-md-12">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Pos</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">YWT</th>
+                            <th scope="col">Ovr</th>
+                            <th scope="col">G</th>
+                            <th scope="col">GP</th>
+                            <th scope="col">PTS</th>
+                            <th scope="col">TRB</th>
+                            <th scope="col">AST</th>
+                            <th scope="col">PER</th>
+                        </tr>
+                    </thead>
+                    <tbody id="draggable">
+                        {% for player in team.roster %}
+                            <tr class="dr" data-player-id="{{ player.id }}">
+                                <th scope="row"></th>
+                                <td>
+                                    <a href="{{ path('app_players_profile', {'name': player.name}) }}">
+                                        {{ player.name }}
+                                    </a>
+                                </td>
+                                <td>{{ player.position }}</td>
+                                <td>{{ player.age }}</td>
+                                <td>-</td>
+                                <td>{{ player.overall }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="100%">No active roster was found.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
