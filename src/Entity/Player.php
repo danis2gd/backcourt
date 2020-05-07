@@ -249,4 +249,12 @@ class Player
     {
         return $this->overall;
     }
+
+    /**
+     * @return bool
+     */
+    public function isInjured(): bool
+    {
+        return $this->injured;
+    }
 }

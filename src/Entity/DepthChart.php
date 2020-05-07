@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\DTO\DepthChartDTO;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -346,5 +348,27 @@ class DepthChart
     public function getTwelfthMan(): ?Player
     {
         return $this->twelfthMan;
+    }
+
+    /**
+     * @return Collection|Player[]
+     */
+    public function getPlayers(): Collection {
+        $players = new ArrayCollection();
+
+        $players->add($this->getPointGuard());
+        $players->add($this->getShootingGuard());
+        $players->add($this->getSmallForward());
+        $players->add($this->getPowerForward());
+        $players->add($this->getCenter());
+        $players->add($this->getSixthMan());
+        $players->add($this->getSeventhMan());
+        $players->add($this->getEighthMan());
+        $players->add($this->getNinthMan());
+        $players->add($this->getTenthMan());
+        $players->add($this->getEleventhMan());
+        $players->add($this->getTwelfthMan());
+
+        return $players;
     }
 }

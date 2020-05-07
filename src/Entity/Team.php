@@ -170,6 +170,23 @@ class Team {
     }
 
     /**
+     * @return Player[]
+     */
+    public function getAvailableRoster(): array {
+        $availablePlayers = [];
+
+        foreach ($this->getRoster() as $player) {
+            if (!$this->getDepthChart()->getPlayers()->contains($player)
+                && !$player->isInjured()
+            ) {
+                $availablePlayers[] = $player;
+            }
+        }
+
+        return $availablePlayers;
+    }
+
+    /**
      * @return Game[]|ArrayCollection
      */
     public function getGames()

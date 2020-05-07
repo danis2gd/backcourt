@@ -228,6 +228,8 @@ class TeamsController extends AbstractController
         $rawDepthChart = $request->get('depthChart');
         $nullableDepthChart = [];
 
+        dump($rawDepthChart);
+
         for ($i = 0; $i < DepthChart::MAX_ROSTER; $i++) {
             $nullableDepthChart[$i] = isset($rawDepthChart[$i]) ? $rawDepthChart[$i] : null;
         }

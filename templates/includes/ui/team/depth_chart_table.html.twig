@@ -1,0 +1,88 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Pos</th>
+        <th scope="col">Age</th>
+        <th scope="col">YWT</th>
+        <th scope="col">Ovr</th>
+        <th scope="col">G</th>
+        <th scope="col">GP</th>
+        <th scope="col">PTS</th>
+        <th scope="col">TRB</th>
+        <th scope="col">AST</th>
+        <th scope="col">PER</th>
+    </tr>
+    </thead>
+    {% if team.depthChart is not null %}
+        <tbody id="depthchart_starters">
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.pointGuard, 'position': 1} %}
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.shootingGuard, 'position': 2} %}
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.smallForward, 'position': 3} %}
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.powerForward, 'position': 4} %}
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.center, 'position': 5} %}
+        </tbody>
+        <tbody id="depthchart_bench">
+            <tr class="unsortable">
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Pos</th>
+                <th scope="col">Age</th>
+                <th scope="col">YWT</th>
+                <th scope="col">Ovr</th>
+                <th scope="col">G</th>
+                <th scope="col">GP</th>
+                <th scope="col">PTS</th>
+                <th scope="col">TRB</th>
+                <th scope="col">AST</th>
+                <th scope="col">PER</th>
+            </tr>
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.sixthMan, 'position': 6} %}
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.seventhMan, 'position': 7} %}
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.eighthMan, 'position': 8} %}
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.ninthMan, 'position': 9} %}
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.tenthMan, 'position': 10} %}
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.eleventhMan, 'position': 11} %}
+            {% include 'includes/ui/team/depth_chart_row.html.twig' with
+                {'player': team.depthChart.twelfthMan, 'position': 12} %}
+        </tbody>
+    {% elseif team.roster is not empty %}
+        {% for player in team.roster %}
+            <tr id="draggable" data-player-id="{{ player.id }}">
+                <th scope="row"></th>
+                <td>
+                    <a href="{{ path('app_players_profile', {'name': player.name}) }}">
+                        {{ player.name }}
+                    </a>
+                </td>
+                <td>{{ player.position }}</td>
+                <td>{{ player.age }}</td>
+                <td>-</td>
+                <td>{{ player.overall }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="100%">No active roster was found.</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </tbody>
+</table>
