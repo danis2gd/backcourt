@@ -17,6 +17,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            security: false # todo: remove
             anonymous: true
             guard:
                 authenticators:
@@ -42,3 +43,4 @@ security:
          - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: ^/, roles: ROLE_USER }
+         - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }
