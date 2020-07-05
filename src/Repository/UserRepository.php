@@ -26,8 +26,8 @@ class UserRepository extends ServiceEntityRepository
      */
     public function getByName(string $userName)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.username = :userName')
+        return $this->createQueryBuilder('user')
+            ->andWhere('user.username = :userName')
             ->setParameter('userName', $userName)
             ->getQuery()
             ->getOneOrNullResult()

@@ -14,7 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity(repositoryClass="App\Repository\TeamRepository")
  */
-class Team {
+class Team
+{
     /**
      * @var integer|null
      *
@@ -90,7 +91,8 @@ class Team {
      * @param User $user
      * @param TeamDTO $teamDTO
      */
-    private function __construct(User $user, TeamDTO $teamDTO) {
+    private function __construct(User $user, TeamDTO $teamDTO)
+    {
         $this->name = $teamDTO->getName();
         $this->abbreviation = $teamDTO->getAbbreviation();
 
@@ -109,7 +111,8 @@ class Team {
      *
      * @return Team
      */
-    public static function create(User $user, TeamDTO $teamDTO) {
+    public static function create(User $user, TeamDTO $teamDTO)
+    {
         return new self($user, $teamDTO);
     }
 
@@ -172,7 +175,8 @@ class Team {
     /**
      * @return Player[]
      */
-    public function getAvailableRoster(): array {
+    public function getAvailableRoster(): array
+    {
         $availablePlayers = [];
 
         foreach ($this->getRoster() as $player) {

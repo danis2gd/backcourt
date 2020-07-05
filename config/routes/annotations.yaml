@@ -1,4 +1,5 @@
 controllers:
     resource: ../../src/Controller
     type: annotation
-    prefix: /
+    options:
+        expose: true

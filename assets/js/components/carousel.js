@@ -5,57 +5,63 @@ import '../../scss/components/_carousel.scss'
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import Routing from '../base/router';
 import Slider from 'react-slick';
-import ReactHtmlParser, {processNodes, convertNodeToElement, htmlparser2} from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
+
 class NewsSlider extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            error: null,
+            isLoaded: false,
+            items: []
+        }
+    }
+
+    componentDidMount() {
+        fetch(Routing.generate(this.props.endpoint))
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+
+                    this.setState({
+                        isLoaded: true,
+                        items: result
+                    });
+                },
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
+    }
 
     render() {
         const settings = {
             arrows: true,
             autoplay: true,
-            centerMode: true,
             dots: true,
-            infinite: true,
         };
 
+        const sliders = this.state.items.map((card, key) =>
+            <Slide key={key} title={card.title} description={card.description}
+                   imagePath={card.imagePath} />
+        );
+
         return (
-            <Slider className="news-slider">
-                <Slides />
+            <Slider {...settings} className="news-slider">
+                {sliders}
             </Slider>
         );
     }
 }
 
-class Slides extends Component {
-    constructor() {
-        super();
 
-        // todo: pull from api
-        this.state = {
-            items: [
-                {
-                    'title': 'Welcome to Backcourt!',
-                    'description': 'test',
-                    'imagePath': '/images/news/kobe_fadeaway.jpg',
-                },
-                {
-                    'title': 'Backcourt World Cup<small><strong>(BETA)</strong></small>',
-                    'description': 'Battle it out against every nation in the inaugural Backcourt World Championship.',
-                    'imagePath': '/images/news/kobe_fadeaway.jpg',
-                }
-            ]
-        }
-    }
-
-    render() {
-        return (
-            this.state.items.map((slide, key) => {
-                    return <Slide key={key} title={slide.title} description={slide.description}
-                                  imagePath={slide.imagePath}/>;
-            })
-        )
-    }
-}
 
 class Slide extends Component {
     render() {
@@ -63,14 +69,12 @@ class Slide extends Component {
             <div className="slide news-slide">
                 <img src={this.props.imagePath} className="d-block" alt={this.props.title}/>
                 <div className="overlay">
-                    <div className="overlay-content">
-                        <h2>{ReactHtmlParser(this.props.title)}</h2>
-                        <p>{ReactHtmlParser(this.props.description)}</p>
-                    </div>
+                    <h2>{ReactHtmlParser(this.props.title)}</h2>
+                    <p>{ReactHtmlParser(this.props.description)}</p>
                 </div>
             </div>
         );
     }
 }
 
-ReactDOM.render(<NewsSlider/>, document.getElementById('news-slider'));
+ReactDOM.render(<NewsSlider endpoint='api_carousel_articles' />, document.getElementById('news-slider'));

@@ -1,1 +1,331 @@
-{"base_url":"","routes":{"app_teams_depth_chart_save":{"tokens":[["text","\/depth_chart\/save"],["variable","\/","[^\/]++","teamName",true],["text","\/teams"]],"defaults":[],"requirements":[],"hosttokens":[],"methods":["POST"],"schemes":[]}},"prefix":"","host":"localhost","port":"","scheme":"http","locale":[]}
+{
+    "base_url": "",
+    "routes": {
+        "app_admin_index": {
+            "tokens": [
+                [
+                    "text",
+                    "\/admin\/"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "api_carousel_articles": {
+            "tokens": [
+                [
+                    "text",
+                    "\/api\/carousel_articles"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_login": {
+            "tokens": [
+                [
+                    "text",
+                    "\/login"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_register": {
+            "tokens": [
+                [
+                    "text",
+                    "\/register"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_logout": {
+            "tokens": [
+                [
+                    "text",
+                    "\/logout"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_error_404": {
+            "tokens": [
+                [
+                    "text",
+                    "\/404"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_games_game": {
+            "tokens": [
+                [
+                    "variable",
+                    "\/",
+                    "[^\/]++",
+                    "id",
+                    true
+                ],
+                [
+                    "text",
+                    "\/games"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_homepage": {
+            "tokens": [
+                [
+                    "text",
+                    "\/"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_players_index": {
+            "tokens": [
+                [
+                    "text",
+                    "\/players\/"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_players_free_agency": {
+            "tokens": [
+                [
+                    "text",
+                    "\/players\/free_agency"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_players_profile": {
+            "tokens": [
+                [
+                    "variable",
+                    "\/",
+                    "[^\/]++",
+                    "name",
+                    true
+                ],
+                [
+                    "text",
+                    "\/players"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_teams_index": {
+            "tokens": [
+                [
+                    "text",
+                    "\/teams\/"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_teams_create": {
+            "tokens": [
+                [
+                    "text",
+                    "\/teams\/create"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_teams_profile": {
+            "tokens": [
+                [
+                    "variable",
+                    "\/",
+                    "[^\/]++",
+                    "teamName",
+                    true
+                ],
+                [
+                    "text",
+                    "\/teams"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_teams_roster": {
+            "tokens": [
+                [
+                    "text",
+                    "\/roster"
+                ],
+                [
+                    "variable",
+                    "\/",
+                    "[^\/]++",
+                    "teamName",
+                    true
+                ],
+                [
+                    "text",
+                    "\/teams"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_teams_depth_chart": {
+            "tokens": [
+                [
+                    "text",
+                    "\/depth_chart"
+                ],
+                [
+                    "variable",
+                    "\/",
+                    "[^\/]++",
+                    "teamName",
+                    true
+                ],
+                [
+                    "text",
+                    "\/teams"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_teams_depth_chart_save": {
+            "tokens": [
+                [
+                    "text",
+                    "\/depth_chart\/save"
+                ],
+                [
+                    "variable",
+                    "\/",
+                    "[^\/]++",
+                    "teamName",
+                    true
+                ],
+                [
+                    "text",
+                    "\/teams"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [
+                "POST"
+            ],
+            "schemes": []
+        },
+        "app_teams_schedule": {
+            "tokens": [
+                [
+                    "text",
+                    "\/schedule"
+                ],
+                [
+                    "variable",
+                    "\/",
+                    "[^\/]++",
+                    "teamName",
+                    true
+                ],
+                [
+                    "text",
+                    "\/teams"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_user_home": {
+            "tokens": [
+                [
+                    "variable",
+                    "\/",
+                    "[^\/]++",
+                    "user",
+                    true
+                ],
+                [
+                    "text",
+                    "\/user"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        }
+    },
+    "prefix": "",
+    "host": "localhost",
+    "port": "",
+    "scheme": "http",
+    "locale": []
+}
