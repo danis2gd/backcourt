@@ -25,8 +25,6 @@ class NewsSlider extends Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
-
                     this.setState({
                         isLoaded: true,
                         items: result
@@ -49,7 +47,7 @@ class NewsSlider extends Component {
         };
 
         const sliders = this.state.items.map((card, key) =>
-            <Slide key={key} title={card.title} description={card.description}
+            <Slide key={key} title={card.title} strapLine={card.strapLine}
                    imagePath={card.imagePath} />
         );
 
@@ -70,7 +68,7 @@ class Slide extends Component {
                 <img src={this.props.imagePath} className="d-block" alt={this.props.title}/>
                 <div className="overlay">
                     <h2>{ReactHtmlParser(this.props.title)}</h2>
-                    <p>{ReactHtmlParser(this.props.description)}</p>
+                    <p>{ReactHtmlParser(this.props.strapLine)}</p>
                 </div>
             </div>
         );
