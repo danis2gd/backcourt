@@ -50,7 +50,6 @@ class Slides extends Component {
     render() {
         return (
             this.state.items.map((slide, key) => {
-                console.log(slide);
                     return <Slide key={key} title={slide.title} description={slide.description}
                                   imagePath={slide.imagePath}/>;
             })
