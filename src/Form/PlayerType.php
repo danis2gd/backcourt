@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace App\Form;
 
-use App\Classes\DTO\GetPlayerRequest;
-use App\DTO\TeamDTO;
+use App\Classes\DTO\PlayerRequest;
 use App\Entity\Player;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -29,7 +28,7 @@ class PlayerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => GetPlayerRequest::class,
+            'data_class' => PlayerRequest::class,
             'csrf_protection' => false
         ]);
     }

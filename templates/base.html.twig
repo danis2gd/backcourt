@@ -17,7 +17,10 @@
             {% include 'includes/ui/userbar.html.twig' %}
 
             {% include 'includes/ui/logo_block.html.twig' %}
+
+            {% if app.user.team is defined %}
             {% include 'includes/ui/navigation.html.twig' %}
+            {% endif %}
 
             {{ include("includes/ui/alerts.html.twig") }}
         {% endblock header %}
@@ -32,6 +35,5 @@
 
         {% block javascripts %}
         {% endblock %}
-
     </body>
 </html>

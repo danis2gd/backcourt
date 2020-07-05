@@ -5,7 +5,7 @@ namespace App\Classes\DTO;
 
 use App\Entity\Player;
 
-class GetPlayerResponse
+class PlayerRequest
 {
     /**
      * @var Player|null
@@ -18,5 +18,13 @@ class GetPlayerResponse
     public function getPlayer(): ?Player
     {
         return $this->player;
+    }
+
+    /**
+     * @param Player|null $player
+     */
+    public function setPlayer(?Player $player): void
+    {
+        $this->player = $player;
     }
 }

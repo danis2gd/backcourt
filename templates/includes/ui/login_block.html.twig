@@ -8,5 +8,9 @@
         </div>
         {{ form_widget(form.submit) }}
         <a href="{{ path('app_register') }}">Register</a>
+
+        <div class="hidden">
+                {{ form_rest(form) }}
+        </div>
     {{ form_end(form) }}
 </div>

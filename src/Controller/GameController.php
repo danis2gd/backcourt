@@ -28,6 +28,10 @@ class GameController extends AbstractController
             ->getRepository(Game::class)
             ->findOneBy(['id' => $id]);
 
+        if (!$game instanceof Game) {
+            $this->redirectToRoute('app_homepage');
+        }
+
         return $this->render(
             'main/game/game.html.twig',
             [

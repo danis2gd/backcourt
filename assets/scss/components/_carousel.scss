@@ -1,0 +1,70 @@
+@import '../base/base';
+
+.news-slider {
+    .slick-list {
+        height: 450px;
+
+        @media screen and (max-width: $main-page-width) {
+            height: 250px;
+        }
+
+        .slide {
+            img {
+                height: auto;
+                width: 100%;
+                margin: 0 auto;
+
+                @media screen and (max-width: 1280px) {
+                    height: 60vh;
+                    width: auto;
+                }
+
+                @media screen and (max-width: 800px) {
+                    height: 40vh;
+                    width: auto;
+                }
+            }
+
+            .overlay {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                top: -330px;
+                left: 0;
+                transition: 0.2s;
+
+                @media screen and (max-width: 1280px) {
+                    top: -100px;
+                }
+
+                @media screen and (max-width: $main-page-width) {
+                    top: -270px;
+                }
+
+                .overlay-content {
+                    display: flex;
+                    flex-wrap: wrap;
+                    color: white;
+
+                    justify-content: center;
+                    align-items: center;
+
+                    text-align: center;
+
+                    h2 {
+                        margin: 0 0 5px 0;
+                        width: 100%;
+
+                        @media screen and (max-width: $main-page-width) {
+                            font-size: 1.8rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .slick-dots {
+        bottom: 0;
+    }
+}

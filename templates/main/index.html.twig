@@ -5,21 +5,24 @@
 {% endblock title %}
 
 {% block body %}
-
     {{ include("includes/ui/news.html.twig") }}
 
     <div class="container page-content">
         <div class="row">
             <div class="col-sm-4">
-                {% if team is null %}
+                {% if app.user.team is not defined %}
                     {{ include('includes/ui/team/create_a_team.html.twig') }}
                 {% else %}
-                    {{ include('includes/ui/team/team_card.html.twig') }}
+                    {{ include('includes/ui/team/team_card.html.twig', {
+                        'team': team
+                    }) }}
                 {% endif %}
             </div>
 
             <div class="col-sm-8">
-                {{ include('includes/ui/team/simple_schedule.html.twig') }}
+                {% if app.user.team is defined %}
+                    {{ include('includes/ui/team/simple_schedule.html.twig') }}
+                {% endif %}
             </div>
         </div>
     </div>
@@ -42,4 +45,11 @@
             .night.light-scheme { background:  #eee; color: black; }
         }
     </style>
+
+    {{ encore_entry_link_tags('carousel') }}
+
 {% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('carousel') }}
+{% endblock javascripts %}
