@@ -21,4 +21,14 @@ class MainController extends AbstractController
             ]
         );
     }
+
+    /**
+     * @Route("/app", name="app_react")
+     */
+    public function reactAction()
+    {
+        return $this->render(
+            'main/react.html.twig'
+        );
+    }
 }

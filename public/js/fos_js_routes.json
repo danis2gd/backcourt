@@ -27,6 +27,19 @@
             "methods": [],
             "schemes": []
         },
+        "api_basic_data": {
+            "tokens": [
+                [
+                    "text",
+                    "\/api\/basic_data"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
         "app_login": {
             "tokens": [
                 [
@@ -104,6 +117,19 @@
                 [
                     "text",
                     "\/"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_react": {
+            "tokens": [
+                [
+                    "text",
+                    "\/app"
                 ]
             ],
             "defaults": [],

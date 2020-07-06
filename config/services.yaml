@@ -29,3 +29,7 @@ services:
     App\Controller\Api\ArticleController:
         calls:
             - [setSerializer, ['@serializer']]
+
+    App\Controller\Api\BasicDataController:
+        calls:
+            - [setSerializer, ['@serializer']]

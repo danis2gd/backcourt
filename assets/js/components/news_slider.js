@@ -5,7 +5,6 @@ import '../../scss/components/_carousel.scss'
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import Routing from '../base/router';
 import Slider from 'react-slick';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -43,6 +42,7 @@ class NewsSlider extends Component {
         const settings = {
             arrows: true,
             autoplay: true,
+            autoplaySpeed: 5000,
             dots: true,
         };
 

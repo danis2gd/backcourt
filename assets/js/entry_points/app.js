@@ -1,23 +1,40 @@
-// module requires
-const $ = require('jquery');
-require('jquery-ui/ui/widgets/sortable');
-require('jquery-ui/ui/widgets/draggable');
-require('jquery-ui/ui/widgets/droppable');
+import '../base/common.js';
 
-const routes = require('../../../public/js/fos_js_routes.json');
-import Routing from '../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
 
-Routing.setRoutingData(routes);
+const App = () => {
+    const [hasError, setErrors] = useState(false);
+    const [basicData, setBasicData] = useState({});
 
-// module imports
-import 'bootstrap';
-import 'popper.js';
+    useEffect(() => {
+        async function fetchData() {
+            const result = await axios(Routing.generate('api_basic_data'));
 
-// env setup
-window.Routing = Routing;
-global.$ = global.jQuery = $;
-window.$ = $;
-window.jQuery = jQuery;
+            setBasicData(result.data['data']);
+        }
+    
+        fetchData();
 
-// custom modules
-import '../components/depth_chart';
+        return () => {}
+    }, [basicData]);
+
+    function debug() {
+        console.log(basicData.user);
+        console.log(basicData.team);
+    }
+
+    return (
+        <div>
+            <button onClick={debug}>
+                Log
+            </button>
+        </div>
+    );
+}
+
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+);

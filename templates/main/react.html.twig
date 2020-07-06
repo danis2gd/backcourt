@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Home
+{% endblock title %}
+
+{% block body %}
+    {{ include("includes/ui/news.html.twig") }}
+
+    <div id="root"></div>
+{% endblock body %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {{ encore_entry_link_tags('news_slider') }}
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('news_slider') }}
+{% endblock javascripts %}

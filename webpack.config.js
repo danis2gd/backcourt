@@ -15,7 +15,7 @@ Encore
     //js entry
     .addEntry('app', './assets/js/entry_points/app.js')
     .addEntry('parsley', './assets/js/entry_points/parsley.js')
-    .addEntry('carousel', './assets/js/components/carousel.js')
+    .addEntry('news_slider', './assets/js/components/news_slider.js')
 
     //css entry
     .addStyleEntry('main', ['./assets/less/main.less', './assets/scss/main.scss'])
@@ -49,8 +49,6 @@ Encore
         jQuery: 'jquery',
         'window.jQuery': 'jquery',
     })
-
-
 ;
 
 module.exports = Encore.getWebpackConfig();
