@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\DBAL\Types\RoleType;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\DBAL\Types\RoleType;
+use App\Classes\AnnotationGroups;
 
 /**
  * @ORM\Table(
@@ -24,6 +26,8 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(name="strUuid", type="guid", length=40, unique=true)
+     *
+     * @Groups({AnnotationGroups::USER_DATA})
      */
     private $uuid;
 
@@ -31,6 +35,8 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="strUsername", type="string", length=40, unique=true)
+     *
+     * @Groups({AnnotationGroups::USER_DATA})
      */
     private $username;
 
@@ -38,6 +44,8 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="strEmail", type="string", length=80, unique=true)
+     *
+     * @Groups({AnnotationGroups::USER_DATA})
      */
     private $email;
 

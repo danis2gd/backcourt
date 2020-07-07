@@ -3,9 +3,13 @@ declare(strict_types=1);
 
 namespace App\Controller\Api;
 
+use App\Classes\AnnotationGroups;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\SerializerAwareTrait;
 
 /**
@@ -18,26 +22,41 @@ class UserController extends AbstractController
 {
     use SerializerAwareTrait;
 
-    private static $data = [
-        'data' => [
-            'id' => 1,
-            'name' => 'Daniel Chadwick',
-            'roles' => [
-                'USER_ROLE',
-                'COMMISSIONER_ROLE',
-            ],
-        ],
-    ];
-
     /**
-     * @Route("/user", name="user")
+     * @Route("/user/{uuid}", name="user")
+     *
+     * @param string $uuid
      *
      * @return Response
      */
-    public function user(): Response
+    public function user(string $uuid): Response
     {
+        $user = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->getByUuid($uuid);
+
+        if (!$user instanceof User) {
+            return new JsonResponse(
+                [
+                    'error' => 'Could not find User.',
+                    'data' => null
+                ],
+                Response::HTTP_NOT_FOUND
+            );
+        }
+
+        dd($this->serializer->serialize(
+            $user,
+            'json',
+            ['groups' => AnnotationGroups::USER_DATA]
+        ));
+
         return new Response(
-            $this->serializer->serialize(self::$data, 'json')
+            $this->serializer->serialize(
+                $user,
+                'json',
+                ['groups' => AnnotationGroups::USER_DATA]
+            )
         );
     }
 }

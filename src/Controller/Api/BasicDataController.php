@@ -26,7 +26,7 @@ class BasicDataController extends AbstractController
                 'abbreviation' => 'CHI',
             ],
             'user' => [
-                'id' => 1,
+                'uuid' => '820f0e16-7d77-11ea-8d4d-a683e722796e',
                 'name' => 'Daniel Chadwick',
                 'roles' => [
                     'USER_ROLE',

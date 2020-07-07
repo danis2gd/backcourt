@@ -22,13 +22,28 @@ class UserRepository extends ServiceEntityRepository
     /**
      * @param string $userName
      *
-     * @return User
+     * @return User|null
      */
-    public function getByName(string $userName)
+    public function getByName(string $userName): ?User
     {
         return $this->createQueryBuilder('user')
             ->andWhere('user.username = :userName')
             ->setParameter('userName', $userName)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+     * @param string $uuid
+     *
+     * @return User|null
+     */
+    public function getByUuid(string $uuid): ?User
+    {
+        return $this->createQueryBuilder('user')
+            ->andWhere('user.uuid = :uuid')
+            ->setParameter('uuid', $uuid)
             ->getQuery()
             ->getOneOrNullResult()
         ;

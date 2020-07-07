@@ -43,6 +43,13 @@
         "api_user": {
             "tokens": [
                 [
+                    "variable",
+                    "\/",
+                    "[^\/]++",
+                    "uuid",
+                    true
+                ],
+                [
                     "text",
                     "\/api\/user"
                 ]
