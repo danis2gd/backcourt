@@ -16,13 +16,13 @@ const App = () => {
         return <div>Loading...</div>
     } else {
         return (
-            <div>
-                <UserCard user={data.user} />
-
-                <button onClick={debug}>
-                    Log
-                </button>
-            </div>
+            <>
+                <div className="container">
+                    <div className="col-sm-4">
+                        <UserCard user={data.user} />
+                    </div>
+                </div>
+            </>
         );
     }
 }

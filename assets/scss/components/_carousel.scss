@@ -1,6 +1,12 @@
 @import '../base/base';
 
 .news-slider {
+    margin-bottom: 30px;
+
+    @media screen and (max-width: map-get($breakpoints, lg)) {
+        margin-bottom: 30px;
+    }
+
     .slick-list {
         height: 450px;
 
@@ -15,6 +21,11 @@
                 width: 100%;
                 object-fit: cover;
                 object-position: top center;
+
+                @media screen and (max-width: map-get($breakpoints, lg)) {
+                    height: 60vh;
+                    width: 100%;
+                }
 
                 @media screen and (max-width: map-get($breakpoints, xs)) {
                     height: 40vh;

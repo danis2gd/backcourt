@@ -41,7 +41,7 @@ class NewsSlider extends Component {
     render() {
         const settings = {
             arrows: true,
-            autoplay: true,
+            autoplay: false,
             autoplaySpeed: 5000,
             dots: true,
         };
