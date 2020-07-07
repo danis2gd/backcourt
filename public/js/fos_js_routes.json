@@ -40,6 +40,19 @@
             "methods": [],
             "schemes": []
         },
+        "api_user": {
+            "tokens": [
+                [
+                    "text",
+                    "\/api\/user"
+                ]
+            ],
+            "defaults": [],
+            "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
         "app_login": {
             "tokens": [
                 [

@@ -33,3 +33,7 @@ services:
     App\Controller\Api\BasicDataController:
         calls:
             - [setSerializer, ['@serializer']]
+
+    App\Controller\Api\UserController:
+        calls:
+            - [setSerializer, ['@serializer']]

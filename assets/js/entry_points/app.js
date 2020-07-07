@@ -4,38 +4,27 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import UserCard from '../components/user/user_card';
+import { data } from 'jquery';
+import { useFetch } from '../inc/fetch';
 
 const App = () => {
-    const [hasError, setErrors] = useState(false);
-    const [basicData, setBasicData] = useState({});
+    const [data, loading, hasError] = useFetch('api_basic_data');
 
-    useEffect(() => {
-        async function fetchData() {
-            const result = axios(Routing.generate('api_basic_data'));
+    if (hasError) {
+        console.log('error');
+    } else if (!loading) {
+        return <div>Loading...</div>
+    } else {
+        return (
+            <div>
+                <UserCard user={data.user} />
 
-            console.log(result);
-
-            setBasicData(result.data['data']);
-        }
-    
-        fetchData();
-
-        return () => {}
-    }, [basicData]);
-
-    function debug() {
-        console.log(basicData.user);
-        console.log(basicData.team);
+                <button onClick={debug}>
+                    Log
+                </button>
+            </div>
+        );
     }
-
-    return (
-        <div>
-            {/* <UserCard user={basicData.user} /> */}
-            <button onClick={debug}>
-                Log
-            </button>
-        </div>
-    );
 }
 
 ReactDOM.render(
