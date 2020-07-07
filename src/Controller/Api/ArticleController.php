@@ -34,7 +34,7 @@ class ArticleController extends AbstractController
 
         return new Response(
             $this->serializer->serialize(
-                $carouselArticles,
+                ['data' => $carouselArticles], // todo: create DTO to handle this
                 'json',
                 ['groups' => AnnotationGroups::ARTICLE_DATA]
             )

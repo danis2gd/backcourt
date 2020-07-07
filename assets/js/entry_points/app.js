@@ -2,9 +2,7 @@ import '../base/common.js';
 
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
 import UserCard from '../components/user/user_card';
-import { data } from 'jquery';
 import { useFetch } from '../inc/fetch';
 
 const App = () => {

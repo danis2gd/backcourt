@@ -7,50 +7,34 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Slider from 'react-slick';
 import ReactHtmlParser from 'react-html-parser';
+import { useFetch } from '../inc/fetch';
 
-class NewsSlider extends Component {
-    constructor() {
-        super();
+const NewsSlider = (props) => {
+    const [data, loading, hasError] = useFetch(props.endpoint);
 
-        this.state = {
-            error: null,
-            isLoaded: false,
-            items: []
-        }
-    }
+    const settings = {
+        arrows: true,
+        autoplay: false,
+        autoplaySpeed: 5000,
+        dots: true,
+    };
 
-    componentDidMount() {
-        fetch(Routing.generate(this.props.endpoint))
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        items: result
-                    });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
-    }
+function debug () {
+    console.log(data);
+    console.log(loading);
+    console.log(hasError);
+}
 
-    render() {
-        const settings = {
-            arrows: true,
-            autoplay: false,
-            autoplaySpeed: 5000,
-            dots: true,
-        };
-
-        const sliders = this.state.items.map((card, key) =>
+    if (hasError) {
+        console.log('error');
+    } else if (!loading) {
+        return <div>Loading...</div>
+    } else {
+        const sliders = data.map((card, key) =>
             <Slide key={key} title={card.title} strapLine={card.strapLine}
-                   imagePath={card.imagePath} />
+                imagePath={card.imagePath} />
         );
-
+    
         return (
             <Slider {...settings} className="news-slider">
                 {sliders}
