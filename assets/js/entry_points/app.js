@@ -6,9 +6,9 @@ import UserCard from '../components/user/user_card';
 import { useFetch } from '../inc/fetch';
 
 const App = () => {
-    const [data, loading, hasError] = useFetch('api_basic_data');
+    const [data, loading, error] = useFetch('api_basic_data');
 
-    if (hasError) {
+    if (error !== null) {
         console.log('error');
     } else if (!loading) {
         return <div>Loading...</div>

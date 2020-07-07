@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export function useFetch(route) {
     const [response, setResponse] = useState(null)
     const [loading, setLoading] = useState(false)
-    const [hasError, setHasError] = useState(false)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         fetch(Routing.generate(route))
@@ -14,11 +14,11 @@ export function useFetch(route) {
                     setLoading(true)
                 },
                 (error) => {
-                    setHasError(true)
+                    setError(error.message)
                     setLoading(true)
                 }
             )
     }, [ response ])
 
-    return [ response, loading, hasError ]
+    return [ response, loading, error ]
 }

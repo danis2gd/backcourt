@@ -10,7 +10,7 @@ import ReactHtmlParser from 'react-html-parser';
 import { useFetch } from '../inc/fetch';
 
 const NewsSlider = (props) => {
-    const [data, loading, hasError] = useFetch(props.endpoint);
+    const [data, loading, error] = useFetch(props.endpoint);
 
     const settings = {
         arrows: true,
@@ -19,7 +19,7 @@ const NewsSlider = (props) => {
         dots: true,
     };
 
-    if (hasError) {
+    if (error !== null) {
         console.log('error');
     } else if (!loading) {
         return <div>Loading...</div>
@@ -36,8 +36,6 @@ const NewsSlider = (props) => {
         );
     }
 }
-
-
 
 class Slide extends Component {
     render() {
