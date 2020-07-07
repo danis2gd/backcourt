@@ -19,12 +19,6 @@ const NewsSlider = (props) => {
         dots: true,
     };
 
-function debug () {
-    console.log(data);
-    console.log(loading);
-    console.log(hasError);
-}
-
     if (hasError) {
         console.log('error');
     } else if (!loading) {
