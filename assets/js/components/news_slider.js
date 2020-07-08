@@ -7,10 +7,10 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Slider from 'react-slick';
 import ReactHtmlParser from 'react-html-parser';
-import { useFetch } from '../inc/fetch';
+import { useFetchOnce } from '../inc/fetch';
 
 const NewsSlider = (props) => {
-    const [data, loading, error] = useFetch(props.endpoint);
+    const [data, loading, error] = useFetchOnce(props.endpoint);
 
     const settings = {
         arrows: true,
