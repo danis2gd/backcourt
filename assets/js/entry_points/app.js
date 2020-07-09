@@ -17,7 +17,7 @@ const App = () => {
             <>
                 <div className="container">
                     <div className="col-sm-4">
-                        <UserCard user={data.user} />
+                        <UserCard username={data.username} />
                     </div>
                 </div>
             </>

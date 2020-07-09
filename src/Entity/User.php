@@ -68,6 +68,8 @@ class User implements UserInterface
      *
      * @ORM\OneToOne(targetEntity="UserTeam", cascade={"persist"})
      * @ORM\JoinColumn(name="intUserTeamId", referencedColumnName="intUserTeamId", nullable=true)
+     *
+     * @Groups({AnnotationGroups::TEAM_DATA})
      */
     private $primaryUserTeam;
 

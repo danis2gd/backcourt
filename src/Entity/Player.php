@@ -6,6 +6,8 @@ namespace App\Entity;
 use App\Classes\SalaryEstimator;
 use App\DTO\PlayerDTO;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\Classes\AnnotationGroups;
 
 /**
  * @ORM\Table(
@@ -22,6 +24,8 @@ class Player
      * @ORM\Id()
      * @ORM\Column(name="intPlayerId", type="integer", length=20, unique=true, options={"unsigned"})
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({AnnotationGroups::PLAYER_DATA})
      */
     private $id;
 
@@ -29,6 +33,8 @@ class Player
      * @var string
      *
      * @ORM\Column(name="strFirstName", type="string", length=40)
+     *
+     * @Groups({AnnotationGroups::PLAYER_DATA})
      */
     private $firstName;
 
@@ -36,6 +42,8 @@ class Player
      * @var string
      *
      * @ORM\Column(name="strLastName", type="string", length=40)
+     *
+     * @Groups({AnnotationGroups::PLAYER_DATA})
      */
     private $lastName;
 
@@ -43,6 +51,8 @@ class Player
      * @var int
      *
      * @ORM\Column(name="intAge", type="integer", length=20, options={"unsigned"})
+     *
+     * @Groups({AnnotationGroups::PLAYER_DATA})
      */
     private $age;
 
@@ -50,6 +60,8 @@ class Player
      * @var string
      *
      * @ORM\Column(name="strPosition", type="string", length=20, options={"unsigned"})
+     *
+     * @Groups({AnnotationGroups::PLAYER_DATA})
      */
     private $position;
 
@@ -58,6 +70,8 @@ class Player
      *
      * @ORM\OneToOne(targetEntity="App\Entity\College")
      * @ORM\JoinColumn(name="intCollegeId", referencedColumnName="intCollegeId", nullable=true)
+     *
+     * @Groups({AnnotationGroups::PLAYER_DATA})
      */
     private $college;
 
@@ -72,6 +86,8 @@ class Player
      * @var int
      *
      * @ORM\Column(name="intSalary", type="integer", length=255, options={"unsigned"})
+     *
+     * @Groups({AnnotationGroups::PLAYER_DATA})
      */
     private $salary; // todo: refactor this into multi-season contracts
 
@@ -86,6 +102,8 @@ class Player
      * @var int
      *
      * @ORM\Column(name="intGameShape", type="integer", length=20, options={"unsigned"})
+     *
+     * @Groups({AnnotationGroups::PLAYER_DATA})
      */
     private $gameShape;
 
@@ -93,6 +111,8 @@ class Player
      * @var int
      *
      * @ORM\Column(name="intOverall", type="integer", options={"unsigned"})
+     *
+     * @Groups({AnnotationGroups::PLAYER_DATA})
      *
      * # todo: this is calculated based on the PlayerAttribute and cached
      */
@@ -240,6 +260,22 @@ class Player
     public function getExpectedSalary(): float
     {
         return SalaryEstimator::estimate($this);
+    }
+
+    /**
+     * @return int
+     */
+    public function getSalary(): int
+    {
+        return $this->salary;
+    }
+
+    /**
+     * @return int
+     */
+    public function getGameShape(): int
+    {
+        return $this->gameShape;
     }
 
     /**

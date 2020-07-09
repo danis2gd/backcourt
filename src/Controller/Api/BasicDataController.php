@@ -3,9 +3,13 @@ declare(strict_types=1);
 
 namespace App\Controller\Api;
 
+use App\Classes\AnnotationGroups;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\SerializerAwareTrait;
 
 /**
@@ -18,24 +22,6 @@ class BasicDataController extends AbstractController
 {
     use SerializerAwareTrait;
 
-    private static $data = [
-        'data' => [
-            'team' => [
-                'id' => 1,
-                'name' => 'Chicago Bulls',
-                'abbreviation' => 'CHI',
-            ],
-            'user' => [
-                'uuid' => '820f0e16-7d77-11ea-8d4d-a683e722796e',
-                'name' => 'Daniel Chadwick',
-                'roles' => [
-                    'USER_ROLE',
-                    'COMMISSIONER_ROLE',
-                ]
-            ]
-        ],
-    ];
-
     /**
      * @Route("/basic_data", name="basic_data")
      *
@@ -43,8 +29,38 @@ class BasicDataController extends AbstractController
      */
     public function basicData(): Response
     {
+        $user = $this->getUser();
+
+        if (!$user instanceof UserInterface) {
+            return new JsonResponse(
+                [
+                    'error' => 'Not authenticated.',
+                    'data' => null
+                ],
+                Response::HTTP_FORBIDDEN
+            );
+        }
+
+        $basicData = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->getBasicDataByUuid($user->getUuid());
+
+        if (!$basicData instanceof UserInterface) {
+            return new JsonResponse(
+                [
+                    'error' => 'Could not find User.',
+                    'data' => null
+                ],
+                Response::HTTP_NOT_FOUND
+            );
+        }
+
         return new Response(
-            $this->serializer->serialize(self::$data, 'json')
+            $this->serializer->serialize(
+                ['data' => $basicData],
+                'json',
+                ['groups' => [AnnotationGroups::USER_DATA, AnnotationGroups::TEAM_DATA, AnnotationGroups::PLAYER_DATA]]
+            )
         );
     }
 }

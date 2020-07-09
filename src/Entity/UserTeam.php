@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\DBAL\Types\RoleType;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\Classes\AnnotationGroups;
 
 /**
  * @ORM\Table(
@@ -22,6 +23,8 @@ class UserTeam
      * @ORM\Id()
      * @ORM\Column(name="intUserTeamId", type="integer", length=20, unique=true, options={"unsigned"})
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({AnnotationGroups::TEAM_DATA})
      */
     private $id;
 
@@ -38,6 +41,8 @@ class UserTeam
      *
      * @ORM\OneToOne(targetEntity="Team", mappedBy="userTeam")
      * @ORM\JoinColumn(name="intTeamId", referencedColumnName="intTeamId")
+     *
+     * @Groups({AnnotationGroups::TEAM_DATA, AnnotationGroups::PLAYER_DATA})
      */
     private $team;
 
@@ -65,6 +70,14 @@ class UserTeam
         Team $team
     ) {
         return new self($user, $team);
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getUser(): User

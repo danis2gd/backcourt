@@ -45,12 +45,6 @@ class UserController extends AbstractController
             );
         }
 
-        dd($this->serializer->serialize(
-            $user,
-            'json',
-            ['groups' => AnnotationGroups::USER_DATA]
-        ));
-
         return new Response(
             $this->serializer->serialize(
                 $user,

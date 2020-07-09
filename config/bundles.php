@@ -16,5 +16,4 @@ return [
     Fresh\DoctrineEnumBundle\FreshDoctrineEnumBundle::class => ['all' => true],
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
     FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
-    JMS\SerializerBundle\JMSSerializerBundle::class => ['all' => true],
 ];

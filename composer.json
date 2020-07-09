@@ -8,7 +8,6 @@
         "beberlei/doctrineextensions": "^1.2",
         "fresh/doctrine-enum-bundle": "^7.0",
         "friendsofsymfony/jsrouting-bundle": "^2.6",
-        "jms/serializer-bundle": "^3.6",
         "nesbot/carbon": "^2.32",
         "ramsey/uuid": "^3.8",
         "sensio/framework-extra-bundle": "^5.5",

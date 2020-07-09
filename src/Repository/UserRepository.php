@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Team;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -47,5 +48,21 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
+    }
+
+    public function getBasicDataByUuid(string $uuid): ?User {
+        return $this->createQueryBuilder('user')
+            ->addSelect(['primaryUserTeam', 'team', 'teams', 'arena', 'players'])
+            ->leftJoin('user.primaryUserTeam', 'primaryUserTeam')
+            ->leftJoin('user.userTeams', 'teams')
+            ->leftJoin('primaryUserTeam.team', 'team')
+            ->leftJoin('team.arena', 'arena')
+            ->leftJoin('team.roster', 'players')
+            ->andWhere('user = :userUuid')
+            ->setParameter('userUuid', $uuid)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
     }
 }

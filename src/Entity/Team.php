@@ -6,6 +6,8 @@ namespace App\Entity;
 use App\DTO\TeamDTO;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\Classes\AnnotationGroups;
 
 /**
  * @ORM\Table(
@@ -22,6 +24,8 @@ class Team
      * @ORM\Id()
      * @ORM\Column(name="intTeamId", type="integer", length=20, unique=true, options={"unsigned"})
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({AnnotationGroups::TEAM_DATA})
      */
     private $id;
 
@@ -37,6 +41,8 @@ class Team
      * @var string
      *
      * @ORM\Column(name="strName", type="string", length=40, unique=true)
+     *
+     * @Groups({AnnotationGroups::TEAM_DATA})
      */
     private $name;
 
@@ -44,6 +50,8 @@ class Team
      * @var string
      *
      * @ORM\Column(name="strAbbreviation", type="string", length=3, unique=true)
+     *
+     * @Groups({AnnotationGroups::TEAM_DATA})
      */
     private $abbreviation;
 
@@ -52,6 +60,8 @@ class Team
      *
      * @ORM\OneToOne(targetEntity="Arena", cascade={"persist"})
      * @ORM\JoinColumn(name="intArenaId", referencedColumnName="intArenaId")
+     *
+     * @Groups({AnnotationGroups::TEAM_DATA})
      */
     private $arena;
 
@@ -75,6 +85,8 @@ class Team
      * @var Player[]|ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Player", mappedBy="team")
+     *
+     * @Groups({AnnotationGroups::PLAYER_DATA})
      */
     private $roster;
 
