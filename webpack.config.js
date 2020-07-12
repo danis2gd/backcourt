@@ -37,7 +37,11 @@ Encore
     })
 
     // enables Less support
-    .enableLessLoader()
+    .enableLessLoader(() => {}, {
+        options: {
+            javascriptEnabled: true
+        }
+    })
     // enable SASS
     .enableSassLoader()
 
