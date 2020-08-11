@@ -26,8 +26,6 @@ class UserController extends AbstractController {
      */
     public function indexAction(?string $userName = null): Response
     {
-        dump($this->getUser()->getRoles());
-
         $settingsForm = null;
 
         $userDTO = new UserDTO();

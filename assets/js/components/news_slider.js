@@ -51,4 +51,4 @@ class Slide extends Component {
     }
 }
 
-ReactDOM.render(<NewsSlider endpoint='api_carousel_articles' />, document.getElementById('news-slider'));
+ReactDOM.render(<NewsSlider endpoint='api_carousel_posts' />, document.getElementById('news-slider'));

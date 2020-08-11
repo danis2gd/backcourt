@@ -11,21 +11,21 @@ use App\Classes\AnnotationGroups;
 
 /**
  * @ORM\Table(
- *     name="tblArticle"
+ *     name="tblPost"
  * )
  *
- * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  */
-class Article
+class Post
 {
     /**
      * @var integer|null
      *
      * @ORM\Id()
-     * @ORM\Column(name="intArticleId", type="integer", length=20, unique=true, options={"unsigned"})
+     * @ORM\Column(name="intPostId", type="integer", length=20, unique=true, options={"unsigned"})
      * @ORM\GeneratedValue(strategy="IDENTITY")
      *
-     * @Groups({AnnotationGroups::ARTICLE_DATA})
+     * @Groups({AnnotationGroups::POST_DATA})
      */
     private $id;
 
@@ -34,7 +34,7 @@ class Article
      *
      * @ORM\Column(name="strTitle", type="string", length=40)
      *
-     * @Groups({AnnotationGroups::ARTICLE_DATA})
+     * @Groups({AnnotationGroups::POST_DATA})
      */
     private $title;
 
@@ -43,7 +43,7 @@ class Article
      *
      * @ORM\Column(name="strImagePath", type="string", nullable=true)
      *
-     * @Groups({AnnotationGroups::ARTICLE_DATA})
+     * @Groups({AnnotationGroups::POST_DATA})
      */
     private $imagePath = null;
 
@@ -52,7 +52,7 @@ class Article
      *
      * @ORM\Column(name="strStrapLine", type="string", length=40, nullable=true)
      *
-     * @Groups({AnnotationGroups::ARTICLE_DATA})
+     * @Groups({AnnotationGroups::POST_DATA})
      */
     private $strapLine;
 
@@ -61,7 +61,7 @@ class Article
      *
      * @ORM\Column(name="strDescription", type="string", length=40)
      *
-     * @Groups({AnnotationGroups::ARTICLE_DATA})
+     * @Groups({AnnotationGroups::POST_DATA})
      */
     private $description;
 
@@ -70,7 +70,7 @@ class Article
      *
      * @ORM\Column(name="dtmPublishDate", type="carbondatetime", nullable=true)
      *
-     * @Groups({AnnotationGroups::ARTICLE_DATA})
+     * @Groups({AnnotationGroups::POST_DATA})
      */
     private $publishDate = null;
 
@@ -79,7 +79,7 @@ class Article
      *
      * @ORM\Column(name="bolCarousel", type="boolean")
      *
-     * @Groups({AnnotationGroups::ARTICLE_DATA})
+     * @Groups({AnnotationGroups::POST_DATA})
      */
     private $carousel = false;
 
@@ -88,7 +88,7 @@ class Article
      *
      * @ORM\Column(name="intCarouselDisplayOrder", type="integer", nullable=true)
      *
-     * @Groups({AnnotationGroups::ARTICLE_DATA})
+     * @Groups({AnnotationGroups::POST_DATA})
      */
     private $carouselDisplayOrder = null;
 
@@ -141,7 +141,7 @@ class Article
      * @param bool $carousel
      * @param bool|null $carouselDisplayOrder
      *
-     * @return Article
+     * @return Post
      */
     public static function create(
         string $title,

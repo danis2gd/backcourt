@@ -14,11 +14,11 @@
             "methods": [],
             "schemes": []
         },
-        "api_carousel_articles": {
+        "api_basic_data": {
             "tokens": [
                 [
                     "text",
-                    "\/api\/carousel_articles"
+                    "\/api\/basic_data"
                 ]
             ],
             "defaults": [],
@@ -27,11 +27,11 @@
             "methods": [],
             "schemes": []
         },
-        "api_basic_data": {
+        "api_carousel_posts": {
             "tokens": [
                 [
                     "text",
-                    "\/api\/basic_data"
+                    "\/api\/carousel_posts"
                 ]
             ],
             "defaults": [],
@@ -154,6 +154,28 @@
             ],
             "defaults": [],
             "requirements": [],
+            "hosttokens": [],
+            "methods": [],
+            "schemes": []
+        },
+        "app_react_routes": {
+            "tokens": [
+                [
+                    "variable",
+                    "\/",
+                    "[^\/]++",
+                    "route",
+                    true
+                ],
+                [
+                    "text",
+                    "\/app"
+                ]
+            ],
+            "defaults": [],
+            "requirements": {
+                "token": ".+"
+            },
             "hosttokens": [],
             "methods": [],
             "schemes": []

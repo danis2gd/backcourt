@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Api;
 
 use App\Classes\AnnotationGroups;
-use App\Entity\Article;
+use App\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,26 +17,26 @@ use Symfony\Component\Serializer\SerializerAwareTrait;
  *
  * @Route(name="api_", path="/api")
  */
-class ArticleController extends AbstractController
+class PostController extends AbstractController
 {
     use SerializerAwareTrait;
 
     /**
-     * @Route(name="carousel_articles", path="/carousel_articles")
+     * @Route(name="carousel_posts", path="/carousel_posts")
      *
      * @return JsonResponse
      */
-    public function carouselArticles(): Response
+    public function carouselPosts(): Response
     {
-        $carouselArticles = $this->getDoctrine()
-            ->getRepository(Article::class)
+        $carouselPosts = $this->getDoctrine()
+            ->getRepository(Post::class)
             ->findAll();
 
         return new Response(
             $this->serializer->serialize(
-                ['data' => $carouselArticles], // todo: create DTO to handle this
+                ['data' => $carouselPosts], // todo: create DTO to handle this
                 'json',
-                ['groups' => AnnotationGroups::ARTICLE_DATA]
+                ['groups' => AnnotationGroups::POST_DATA]
             )
         );
     }

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Blog
+{% endblock title %}
+
+{% block body %}
+    <div class="container page-content">
+        <div class="row">
+            <div class="col-md-12">
+                <h5>Blog</h5>
+                <div>
+                    <ul>
+                        {% for post in posts %}
+                            <li>
+                                <a href="{{ path('app_blog_post', {'postId': post.id}) }}">{{ post.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Blog
+{% endblock title %}
+
+{% block body %}
+    <div class="container page-content">
+        <div class="row">
+            <div class="col-md-12">
+                <h5>{{ post.title }}</h5>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
