@@ -1,14 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - Blog
+    {{ parent() }} - Blog - {{ post.title }}
 {% endblock title %}
 
 {% block body %}
     <div class="container page-content">
         <div class="row">
             <div class="col-md-12">
-                <h5>{{ post.title }}</h5>
+                <h1>{{ post.title }}</h1>
+                {{ post.text|raw }}
+            </div>
+            <div class="col-md-12">
+                - <a href="{{ path('app_user_home', {'user': post.author.username}) }}">
+                    {{ post.author.username }}
+                </a>
             </div>
         </div>
     </div>

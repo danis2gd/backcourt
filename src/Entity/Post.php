@@ -59,11 +59,11 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="strDescription", type="string", length=40)
+     * @ORM\Column(name="strText", type="string")
      *
      * @Groups({AnnotationGroups::POST_DATA})
      */
-    private $description;
+    private $text;
 
     /**
      * @var CarbonInterface
@@ -93,6 +93,14 @@ class Post
     private $carouselDisplayOrder = null;
 
     /**
+     * @var User
+     *
+     * @ORM\OneToOne(targetEntity="User", mappedBy="uuid")
+     * @ORM\JoinColumn(name="strAuthorUuid", referencedColumnName="strUuid")
+     */
+    private $author;
+
+    /**
      * @param string $title
      * @param string $description
      * @param string $imagePath
@@ -112,7 +120,7 @@ class Post
     )
     {
         $this->title = $title;
-        $this->description = $description;
+        $this->text = $description;
         $this->imagePath = $imagePath;
         $this->publishDate = $publishDate;
         $this->strapLine = $strapLine;
@@ -199,9 +207,9 @@ class Post
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getText(): string
     {
-        return $this->description;
+        return $this->text;
     }
 
     /**
@@ -226,5 +234,13 @@ class Post
     public function getCarouselDisplayOrder(): ?int
     {
         return $this->carouselDisplayOrder;
+    }
+
+    /**
+     * @return User
+     */
+    public function getAuthor(): User
+    {
+        return $this->author;
     }
 }

@@ -54,7 +54,7 @@ class BlogController extends AbstractController
     {
         $post = $this->getDoctrine()
             ->getRepository(Post::class)
-            ->findOneBy(['id' => $postId]);
+            ->getById($postId);
 
         return $this->render(
             'main/blog/post.html.twig',

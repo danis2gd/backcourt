@@ -20,6 +20,22 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
+    public function getById(int $postId)
+    {
+        $qb = $this->createQueryBuilder('post');
+        $expr = $qb->expr();
+
+        return $qb
+            ->addSelect('user')
+            ->innerJoin('post.author', 'user')
+            ->andWhere(
+                $expr->eq('post.id', ':postId')
+            )
+            ->setParameter('postId', $postId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     /**
      * @return Post[]
      */
@@ -38,7 +54,6 @@ class PostRepository extends ServiceEntityRepository
             )
             ->orderBy('post.carouselDisplayOrder')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 }
