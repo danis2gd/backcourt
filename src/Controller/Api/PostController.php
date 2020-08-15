@@ -30,7 +30,7 @@ class PostController extends AbstractController
     {
         $carouselPosts = $this->getDoctrine()
             ->getRepository(Post::class)
-            ->findAll();
+            ->getCarouselPosts();
 
         return new Response(
             $this->serializer->serialize(

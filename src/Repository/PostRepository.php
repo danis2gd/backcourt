@@ -47,11 +47,14 @@ class PostRepository extends ServiceEntityRepository
         return $qb
             ->andWhere(
                 $eb->eq('post.carousel', true),
-                $eb->andX(
-                    $eb->gte('post.publishDate', Carbon::now()),
-                    $eb->eq('post.carousel', true)
+                $eb->orX(
+                    $eb->lte('post.publishDate', ':time'),
+                    $eb->isNull('post.publishDate')
                 )
             )
+            ->setParameters([
+                'time' => Carbon::now()
+            ])
             ->orderBy('post.carouselDisplayOrder')
             ->getQuery()
             ->getResult();
