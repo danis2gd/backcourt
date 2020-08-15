@@ -13,12 +13,13 @@ Encore
     .setPublicPath('/build')
 
     //js entry
+    .addEntry('main', './assets/js/entry_points/main.js')
     .addEntry('app', './assets/js/entry_points/app.js')
     .addEntry('parsley', './assets/js/entry_points/parsley.js')
     .addEntry('news_slider', './assets/js/components/news_slider.js')
+    .addEntry('components', './assets/js/components/_components.js')
 
     //css entry
-    .addStyleEntry('main', ['./assets/less/main.less', './assets/scss/main.scss'])
     .addStyleEntry('landing', './assets/scss/_landing.scss')
     .addStyleEntry('login', './assets/less/pages/login.less')
     .addStyleEntry('register', './assets/less/pages/register.less')

@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-dark sticky-top main-nav">
     <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -13,20 +14,26 @@
                     <a class="nav-link" href="{{ path('app_teams_index') }}">Teams</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
                         Team
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbar-team">
-                        <a class="dropdown-item" href="{{ path('app_teams_profile', {'teamName': app.user.team.name}) }}">{{ app.user.team.name }}</a>
-                        <a class="dropdown-item" href="{{ path('app_teams_roster', {'teamName': app.user.team.name}) }}">Roster</a>
-                        <a class="dropdown-item" href="{{ path('app_teams_schedule', {'teamName': app.user.team.name}) }}">Schedule</a>
-                        <a class="dropdown-item" href="{{ path('app_teams_depth_chart', {'teamName': app.user.team.name}) }}">Depth Chart</a>
+                        <a class="dropdown-item"
+                           href="{{ path('app_teams_profile', {'teamName': app.user.team.name}) }}">{{ app.user.team.name }}</a>
+                        <a class="dropdown-item"
+                           href="{{ path('app_teams_roster', {'teamName': app.user.team.name}) }}">Roster</a>
+                        <a class="dropdown-item"
+                           href="{{ path('app_teams_schedule', {'teamName': app.user.team.name}) }}">Schedule</a>
+                        <a class="dropdown-item"
+                           href="{{ path('app_teams_depth_chart', {'teamName': app.user.team.name}) }}">Depth Chart</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
                         Players
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbar-team">
@@ -35,9 +42,6 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
         </div>

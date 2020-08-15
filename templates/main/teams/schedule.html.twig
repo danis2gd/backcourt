@@ -4,6 +4,10 @@
     {{ parent() }} - {{ team.name }} - Schedule
 {% endblock title %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags('components') }}
+{% endblock javascripts %}
+
 {% block body %}
     <div class="container page-content">
         <h3>{{ team.name }}</h3>
@@ -15,6 +19,8 @@
 
             <div class="col-md-8">
                 {{ include('includes/ui/team/detailed_schedule.html.twig') }}
+
+                <div id="block"></div>
             </div>
         </div>
     </div>
