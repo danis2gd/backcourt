@@ -29,7 +29,7 @@ class GameController extends AbstractController
             ->findOneBy(['id' => $id]);
 
         if (!$game instanceof Game) {
-            $this->redirectToRoute('app_homepage');
+            $this->redirectToRoute('app_home');
         }
 
         return $this->render(

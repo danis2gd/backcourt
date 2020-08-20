@@ -1,55 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - Home
+    {{ parent() }}
 {% endblock title %}
 
 {% block body %}
-    {{ include("includes/ui/news.html.twig") }}
-
     <div class="container page-content">
-        <div class="row">
-            <div class="col-sm-4">
-                {% if app.user.team is not defined %}
-                    {{ include('includes/ui/team/create_a_team.html.twig') }}
-                {% else %}
-                    {{ include('includes/ui/team/team_card.html.twig', {
-                        'team': team
-                    }) }}
-                {% endif %}
-            </div>
 
-            <div class="col-sm-8">
-                {% if app.user.team is defined %}
-                    {{ include('includes/ui/team/simple_schedule.html.twig') }}
-                {% endif %}
-            </div>
-        </div>
     </div>
 {% endblock body %}
 
 {% block stylesheets %}
-    {{ parent() }}
-
-    <style>
-        .day   { background: #eee; color: black; }
-        .night { background: #333; color: white; }
-
-        @media (prefers-color-scheme: dark) {
-          .day.dark-scheme   { background:  #333; color: white; }
-          .night.dark-scheme { background: black; color:  #ddd; }
-        }
-
-        @media (prefers-color-scheme: light) {
-         .day.light-scheme   { background: white; color:  #555; }
-            .night.light-scheme { background:  #eee; color: black; }
-        }
-    </style>
-
-    {{ encore_entry_link_tags('news_slider') }}
-
 {% endblock stylesheets %}
 
 {% block javascripts %}
-    {{ encore_entry_script_tags('news_slider') }}
 {% endblock javascripts %}

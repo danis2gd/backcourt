@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Home
+{% endblock title %}
+
+{% block body %}
+    {{ include("includes/ui/news.html.twig") }}
+
+    <div class="container page-content">
+        <div class="row">
+            <div class="col-sm-4">
+                {% if app.user.team is not defined %}
+                    {{ include('includes/ui/team/create_a_team.html.twig') }}
+                {% else %}
+                    {{ include('includes/ui/team/team_card.html.twig', {
+                        'team': team
+                    }) }}
+                {% endif %}
+            </div>
+
+            <div class="col-sm-8">
+                {% if app.user.team is defined %}
+                    {{ include('includes/ui/team/simple_schedule.html.twig') }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('news_slider') }}
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('news_slider') }}
+{% endblock javascripts %}
