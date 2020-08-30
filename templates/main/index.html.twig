@@ -4,13 +4,62 @@
     {{ parent() }}
 {% endblock title %}
 
-{% block body %}
-    <div class="container page-content">
+{% block header %}
+{% endblock header %}
 
-    </div>
+{% block body %}
+    <section class="landing">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center text-light">
+                <div class="col-12">
+                    <div class="row mb-2">
+                        <div class="col-12 text-center">
+                            <img class="" src="images/logo.png">
+                        </div>
+                    </div>
+                    <div class="row mb-2 mb-sm-4">
+                        <div class="col-12 text-center">
+                            <h2>Join the worlds best online basketball simulator.</h2>
+                            <h4>Coming to a device near you soon.</h4>
+                        </div>
+                    </div>
+                    <div class="row mb-1 mb-sm-3">
+                        <div class="col-12 text-center">
+                            <h2>Why backcourt?</h2>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12 col-sm-4">
+                            <h2>Realism</h2>
+                            <p class="bg-dark p-3 rounded">
+                                Manage your coaching style, play style and schemes on
+                                the fly - or set it up before the game!
+                            </p>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <h2>Worldwide</h2>
+                            <p class="bg-dark p-3 rounded">
+                                Join a worldwide community of coaches all battling in
+                                weekly competitions, leagues and scrimmages.
+                            </p>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <h2>Anywhere</h2>
+                            <p class="bg-dark p-3 rounded">
+                                From mobile phones to tablets, we have optimised our
+                                website for all devices. All you need is an internet
+                                connection.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock body %}
 
 {% block stylesheets %}
+    {{ encore_entry_link_tags('landing') }}
 {% endblock stylesheets %}
 
 {% block javascripts %}

@@ -15,7 +15,7 @@ class MainController extends AbstractController
     public function indexAction()
     {
         return $this->render(
-            'main/index.html.twig',
+            'main/index.html.twig'
         );
     }
 
