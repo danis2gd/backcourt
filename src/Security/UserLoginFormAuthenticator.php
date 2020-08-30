@@ -137,7 +137,7 @@ class UserLoginFormAuthenticator extends AbstractFormLoginAuthenticator
      *
      * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response|null
      */
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
         if ($request->getSession() === null) {
             throw new \Exception('Session is invalid.');
@@ -147,7 +147,7 @@ class UserLoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('app_homepage'));
+        return new RedirectResponse($this->urlGenerator->generate('app_home'));
     }
 
     /**

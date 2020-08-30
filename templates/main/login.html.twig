@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% block body %}
+    <div class="landing">
+        {% include 'includes/ui/userbar.html.twig' %}
+
+        <div class="content">
+            <div class="container">
+                {% include 'includes/ui/logo_block.html.twig' %}
+
+                {% include 'includes/ui/login_block.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('login') }}
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('parsley') }}
+{% endblock javascripts %}
